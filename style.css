@@ -74,13 +74,13 @@ line-height:1pt;
 }
 
 #app>div.page {
-  position:absolute;
-  top:44pt;
-   bottom:34pt;
-  left:0;
-  right:0;
-  overflow:auto;
-  padding:8pt;
+  position: absolute;
+    top: 50%;
+    left: 50%;
+  margin-top: -50px;
+  margin-left: -50px;
+  width: 100px;
+  height: 100px;
   line-height:1.5;
 }
 #app * {
@@ -204,4 +204,12 @@ main>footer .feature {
   float:right;
   width:20%;
   text-align:right;
+}
+
+.options{
+  height: 100%; 
+  width:100%;
+}
+#title{
+  font-size: 20px;
 }
