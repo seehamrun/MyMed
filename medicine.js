@@ -1,5 +1,4 @@
 // Map of medicine name to the medicine properties
-// TODO: Store in localstorage 
 // https://blog.logrocket.com/the-complete-guide-to-using-localstorage-in-javascript-apps-ba44edb53a36/
 currentMedicine = {}
 

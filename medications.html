@@ -33,15 +33,12 @@
       <div class="container" id="medicationsContainer">
       </div>
     </div>
-
-    <footer align="center">
+  </div>
+ 
+  <footer align="center">
       <input type='button' id='newMedicineButton' name='New medicine' value="+">
       <a href="home.html"><input type='button' class='' name='Home' value="Home"></a>
     </footer>
-  </div>
- 
-  <footer>
-  </footer>  
 </main>
 
 
@@ -55,7 +52,7 @@
     container.innerHTML = ""
     for (medicine in getMedicine()) {
       console.log(medicine)
-      container.innerHTML += "<div class='row' align='center'> <input type='button' class='options' name='" + medicine +"' value='" + medicine + "'> </div><br><br>"
+      container.innerHTML += "<div class='row' align='center'> <input type='button' class='options' name='" + medicine +"' value='" + medicine + "'> </div><br>"
     }
   }
 

@@ -1,5 +1,5 @@
 div.page::-webkit-scrollbar {     
-  width: 0 !important;
+  width: 0;
 }
 
 @font-face {
@@ -75,13 +75,14 @@ line-height:1pt;
 
 #app>div.page {
   position: absolute;
-    top: 50%;
+    top: 30%;
     left: 50%;
   margin-top: -50px;
   margin-left: -50px;
   width: 100px;
-  height: 100px;
+  height: 500px;
   line-height:1.5;
+    overflow:scroll;
 }
 #app * {
   -webkit-touch-callout: none; /* iOS Safari */
