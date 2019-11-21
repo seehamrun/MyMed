@@ -1,0 +1,66 @@
+<link rel="stylesheet" href="style.css">
+<script src="lib/jquery-3.1.1.js"></script>
+
+<header>
+  <h1>MyMed</h1>
+</header>
+
+<main>
+  <header>
+    <div class="feature"></div>
+    <div class="feature"></div>
+  </header>
+  
+  <div id="app">
+    <header>
+       <div class="system-bar">
+        <div class="left">422 Mobile</div>
+
+        <div class="centre">3:00</div>
+         <div class="right"><span class="ion-battery-full"></span></div>
+       </div>
+
+      <div class="left">
+      <span class="ion-chevron-left"></span>
+      </div>
+      <div id = "title" align="center">MyMed</div>
+      <div class="right">
+       <span class="ion-navicon"></span>
+      </div>
+    </header>
+
+    <div class="page">
+      <div class="container" id="medicationsContainer">
+      </div>
+    </div>
+  </div>
+ 
+  <footer align="center">
+      <input type='button' id='newMedicineButton' name='New medicine' value="+">
+      <a href="home.html"><input type='button' class='' name='Home' value="Home"></a>
+    </footer>
+</main>
+
+
+<script src="medicine.js"></script>
+<script>
+  loadMedicine()
+  var i = 0
+
+  function showMedicine() {
+    container = document.getElementById("medicationsContainer")
+    container.innerHTML = ""
+    for (medicine in getMedicine()) {
+      console.log(medicine)
+      container.innerHTML += "<div class='row' align='center'> <input type='button' class='options' name='" + medicine +"' value='" + medicine + "'> </div><br>"
+    }
+  }
+
+  $(document).on('click', '#newMedicineButton', function () {
+    console.log("clicked!")
+    addNewMedicine("mynewmedicine" + (getMedicineCount()+1), {})
+    showMedicine()
+  });
+
+  showMedicine()
+</script> 
