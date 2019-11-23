@@ -39,9 +39,13 @@
     </div>
 
     <footer align="center">
-      <input type='button' id='cancelNewMedicineButton' name='Cancel' value="x" hidden="true"> 
-      <input type='button' id='newMedicineButton' name='New medicine' value="+">
-      <a href="home.html"><input type='button' class='' name='Home' value="Home"></a>
+      <div id="landingPageFooter">
+        <input type='button' id='newMedicineButton' name='New medicine' value="+">
+        <a href="home.html"><input type='button' class='' name='Home' value="Home"></a>
+      </div>
+      <div id="newMedicineFooter" hidden="true">
+        <input type='button' id='cancelNewMedicineButton' name='Cancel' value="x"> 
+      </div>
     </footer>
   </div>
  
@@ -67,12 +71,12 @@
 
   $(document).on('click', '#newMedicineButton', function () {
     // hide the medicine page and show the new medicine form
-    document.getElementById("medicinePage").setAttribute("hidden", "true")
     $("#newMedicinePage").removeAttr("hidden")
+    document.getElementById("medicinePage").setAttribute("hidden", "true")
     // hide the new medicine button since theyre already on the new page
     // show the cancel button
-    $("#cancelNewMedicineButton").removeAttr("hidden") 
-    document.getElementById("newMedicineButton").setAttribute("hidden", "true")
+    $("#newMedicineFooter").removeAttr("hidden") 
+    document.getElementById("landingPageFooter").setAttribute("hidden", "true")
   });
 
   // Finally load all the medicine from local storage and show it
