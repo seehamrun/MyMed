@@ -65,23 +65,14 @@
     }
   }
 
-  function showNewMedicineForm() {
+  $(document).on('click', '#newMedicineButton', function () {
     // hide the medicine page and show the new medicine form
     document.getElementById("medicinePage").setAttribute("hidden", "true")
     $("#newMedicinePage").removeAttr("hidden")
-
     // hide the new medicine button since theyre already on the new page
     // show the cancel button
     $("#cancelNewMedicineButton").removeAttr("hidden") 
     document.getElementById("newMedicineButton").setAttribute("hidden", "true")
-
-  }
-
-  $(document).on('click', '#newMedicineButton', function () {
-    console.log("clicked!")
-    // addNewMedicine("mynewmedicine" + (getMedicineCount()+1), {})
-    // showMedicine()
-    showNewMedicineForm()
   });
 
   // Finally load all the medicine from local storage and show it
