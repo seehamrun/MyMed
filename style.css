@@ -76,10 +76,10 @@ line-height:1pt;
 #app>div.page {
   position: absolute;
   top: 30%;
-  left: 50%;
+  left: 30%;
   margin-top: -50px;
   margin-left: -50px;
-  width: 100px;
+  width: 200px;
   height: 400px;
   line-height:1.5;
   overflow:scroll;
@@ -210,6 +210,11 @@ main>footer .feature {
 .options{
   height: 100%; 
   width:100%;
+}
+
+.medButton{
+  height: 100%; 
+  width:50%;
 }
 
 #title{

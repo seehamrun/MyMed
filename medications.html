@@ -35,7 +35,26 @@
     </div>
 
     <div class="page" id="newMedicinePage" hidden="true">
-      DUMMY APGE
+      <h2>New Medicaton</h2>
+      <form>
+        <label>Name: </label>
+        <select name="Medicine Name">
+          <option value="Empty"></option>
+          <option value="Amoxicillin">Amoxicillin</option>
+          <option value="Metformin">Metformin</option>
+        </select>
+
+        <br>
+        <label>Dosage: </label>
+        <input type="number" name="dosageNum" min="1"> every <input type="number" name="frequencyNum" min="1"> <select name="frequency">
+          <option value="Empty"></option>
+          <option value="daily">day</option>
+          <option value="hourly">hour</option>
+          <option value="weekly">week</option>
+        </select>
+
+        <input type="submit" name="submit">
+      </form>
     </div>
 
     <footer align="center">
@@ -65,7 +84,7 @@
     container.innerHTML = ""
     for (medicine in getMedicine()) {
       console.log(medicine)
-      container.innerHTML += "<div class='row' align='center'> <input type='button' class='options' name='" + medicine +"' value='" + medicine + "'> </div><br>"
+      container.innerHTML += "<div class='row' align='center'> <input type='button' class='medButton' name='" + medicine +"' value='" + medicine + "'> </div><br>"
     }
   }
 
@@ -77,6 +96,17 @@
     // show the cancel button
     $("#newMedicineFooter").removeAttr("hidden") 
     document.getElementById("landingPageFooter").setAttribute("hidden", "true")
+  });
+
+
+  $(document).on('click', '#cancelNewMedicineButton', function () {
+    // hide the medicine page and show the new medicine form
+    $("#medicinePage").removeAttr("hidden")
+    document.getElementById("newMedicinePage").setAttribute("hidden", "true")
+    // hide the new medicine button since theyre already on the new page
+    // show the cancel button
+    $("#landingPageFooter").removeAttr("hidden") 
+    document.getElementById("newMedicineFooter").setAttribute("hidden", "true")
   });
 
   // Finally load all the medicine from local storage and show it
