@@ -29,12 +29,17 @@
       </div>
     </header>
 
-    <div class="page">
+    <div class="page" id="medicinePage">
       <div class="container" id="medicationsContainer">
       </div>
     </div>
 
+    <div class="page" id="newMedicinePage" hidden="true">
+      DUMMY APGE
+    </div>
+
     <footer align="center">
+      <input type='button' id='cancelNewMedicineButton' name='Cancel' value="x" hidden="true"> 
       <input type='button' id='newMedicineButton' name='New medicine' value="+">
       <a href="home.html"><input type='button' class='' name='Home' value="Home"></a>
     </footer>
@@ -42,7 +47,7 @@
  
   
 
-    <footer>
+  <footer>
     <div class="feature"></div>
   </footer>
 </main>
@@ -50,9 +55,7 @@
 
 <script src="medicine.js"></script>
 <script>
-  loadMedicine()
-  var i = 0
-
+  // Reads medicine from local storage and shows it on the page.
   function showMedicine() {
     container = document.getElementById("medicationsContainer")
     container.innerHTML = ""
@@ -62,11 +65,26 @@
     }
   }
 
+  function showNewMedicineForm() {
+    // hide the medicine page and show the new medicine form
+    document.getElementById("medicinePage").setAttribute("hidden", "true")
+    $("#newMedicinePage").removeAttr("hidden")
+
+    // hide the new medicine button since theyre already on the new page
+    // show the cancel button
+    $("#cancelNewMedicineButton").removeAttr("hidden") 
+    document.getElementById("newMedicineButton").setAttribute("hidden", "true")
+
+  }
+
   $(document).on('click', '#newMedicineButton', function () {
     console.log("clicked!")
-    addNewMedicine("mynewmedicine" + (getMedicineCount()+1), {})
-    showMedicine()
+    // addNewMedicine("mynewmedicine" + (getMedicineCount()+1), {})
+    // showMedicine()
+    showNewMedicineForm()
   });
 
+  // Finally load all the medicine from local storage and show it
+  loadMedicine()
   showMedicine()
 </script> 
