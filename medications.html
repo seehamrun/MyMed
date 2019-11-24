@@ -132,11 +132,11 @@
     $("#medicineInfoPage").removeAttr("hidden")
     $("#medicineInfoFooter").removeAttr("hidden") 
     medicineInfo = getMedicineInfo(medicine)
-    html = "<h2>" + medicine + "</h2> <br>"
-    html += "<b> What is it: </b>" + medicineInfo["what"] + "<br>"
-    html += "<b> What it treats: </b>" + medicineInfo["treats"] + "<br>"
-    html += "<b> How it works: </b>" + medicineInfo["how"] + "<br>"
-    html += "<b> How to use: </b>" + medicineInfo["usage"] + "<br>"
+    html = "<div class = 'medInfo'><h2>" + medicine + "</h2> <br>"
+    html += "<b> What is it: </b>" + medicineInfo["what"] + "<br><br>"
+    html += "<b> What it treats: </b>" + medicineInfo["treats"] + "<br>v"
+    html += "<b> How it works: </b>" + medicineInfo["how"] + "<br><br>"
+    html += "<b> How to use: </b>" + medicineInfo["usage"] + "<br> </div>"
 
     $("#medicineInfoPage").html(html)
     console.log(medicineInfo)

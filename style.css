@@ -221,18 +221,20 @@ main>footer .feature {
 }
 
 .medButton{
-  background-color: none;
+  background-color: white;
   width: 150px;
   height: 25px;
-    font-size: 12pt;
-
+  font-size: 12pt;  
+  font-family:'Helvetica Neue';
 }
 
 .button{ 
-  background-color: none;
+  background-color: white;
   width: 150px;
   height: 25px;
   font-size: 12pt;
+  font-family:'Helvetica Neue';
+
 }
 
 #title{
@@ -241,6 +243,10 @@ main>footer .feature {
 }
 
 h3 {
+  color: white;
+}
+
+.medInfo{
   color: white;
 }
 
