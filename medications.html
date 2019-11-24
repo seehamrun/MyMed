@@ -77,9 +77,13 @@
   </footer>
 </main>
 
-
-<script src="medicine.js"></script>
+<!-- 
+  The order here is important. First load the knownMedicine 
+  because that is used by medicine.js, then add the js that
+  actually controls the page (because it depends on medicine.js)
+-->
 <script src="knownMedicine.js"></script>
+<script src="medicine.js"></script>
 <script>
   // Reads medicine from local storage and shows it on the page.
   function showMedicine() {
