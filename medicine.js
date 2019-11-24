@@ -1,15 +1,8 @@
 // Map of medicine name to the medicine properties
-// https://blog.logrocket.com/the-complete-guide-to-using-localstorage-in-javascript-apps-ba44edb53a36/
 currentMedicine = {}
 
 defaultMedicine = {
-	"Amoxicillin" : {
-		"what": "This medication is a penicillin type antibiotic",
-		"treats": "bacterial infections",
-		"how": "stops the growth of bacteria",
-		"usage": "Take this medication by mouth with or without food as " +
-				 "directed by your doctor, usually every 8 hours.",
-	}, 
+	"Amoxicillin" : knowMedicines["Amoxicillin"],
 	"Ibuprofen" : {
 		"what": "What Ibuprofen is for",
 		"treats": "what Ibuprofen treats",
