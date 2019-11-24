@@ -36,56 +36,114 @@
 
     <div class="page" id="newMedicinePage" hidden="true">
       <h2>New Medicaton</h2>
-      <form>
         <label>Name: </label>
-        <select name="Medicine Name">
+        <select name="MedicineName" id="MedicineName">
           <option value="Empty"></option>
-          <option value="Amoxicillin">Amoxicillin</option>
-          <option value="Metformin">Metformin</option>
+          <!--The other options get filled in when this page is rendered -->
         </select>
 
         <br>
-        <label>Dosage: </label>
-        <input type="number" name="dosageNum" min="1"> every <input type="number" name="frequencyNum" min="1"> <select name="frequency">
+        <label>Number of Dosages: </label>
+        <input type="number" name="dosageNum" min="1" id="dosageNum"> <label>every</label> <input type="number" name="frequencyNum" min="1" id="frequencyNum"> <select name="frequency" id="frequency">
           <option value="Empty"></option>
           <option value="daily">day</option>
           <option value="hourly">hour</option>
           <option value="weekly">week</option>
         </select>
 
-        <input type="submit" name="submit">
-      </form>
+        <button id="medicineFormButton" onclick="medicineFormSubmitted()">Save Medicine</button>
     </div>
 
+    <div class="page" id="medicineInfoPage" hidden="true">
+    </div>
+
+
     <footer align="center">
-      <div id="landingPageFooter">
+      <div id="medicinePageFooter">
         <input type='button' id='newMedicineButton' name='New medicine' value="+">
         <a href="home.html"><input type='button' class='' name='Home' value="Home"></a>
       </div>
       <div id="newMedicineFooter" hidden="true">
         <input type='button' id='cancelNewMedicineButton' name='Cancel' value="x"> 
       </div>
+      <div id="medicineInfoFooter" hidden="true">
+       <button id='exitMedicineInfoView' name='exit'>✔️</button> 
+      </div>
     </footer>
   </div>
- 
-  
 
   <footer>
     <div class="feature"></div>
   </footer>
 </main>
 
-
+<!-- 
+  The order here is important. First load the knownMedicine 
+  because that is used by medicine.js, then add the js that
+  actually controls the page (because it depends on medicine.js)
+-->
+<script src="knownMedicine.js"></script>
 <script src="medicine.js"></script>
 <script>
   // Reads medicine from local storage and shows it on the page.
   function showMedicine() {
+    // Show the medicine page contents
+    $("#medicinePage").removeAttr("hidden")
+    $("#medicinePageFooter").removeAttr("hidden")  
+
+    // hide the other pages
+    document.getElementById("newMedicinePage").setAttribute("hidden", "true")
+    document.getElementById("newMedicineFooter").setAttribute("hidden", "true")
+    document.getElementById("medicineInfoPage").setAttribute("hidden", "true")
+    document.getElementById("medicineInfoFooter").setAttribute("hidden", "true")
+
+    // Now list out all the medicine content
     container = document.getElementById("medicationsContainer")
     container.innerHTML = ""
     for (medicine in getMedicine()) {
       console.log(medicine)
-      container.innerHTML += "<div class='row' align='center'> <input type='button' class='medButton' name='" + medicine +"' value='" + medicine + "'> </div><br>"
+      container.innerHTML += "<br><div align='center'> <button class='medButton' name='" + medicine +"' id='"+medicine+"'> " + medicine + "</button></div><br>"
     }
+  }
+
+  function medicineFormSubmitted(){
+    medicine = {
+      "name": document.getElementById("MedicineName").value,
+      "dosageNum": document.getElementById("dosageNum").value,
+      "frequencyNum": document.getElementById("frequencyNum").value,
+      "frequency": document.getElementById("frequency").value,      
+    }
+    showConfirmation(medicine)
+  }
+
+  function showConfirmation(medicine) {
+    // TODO: actually show a confirmation page
+    console.log(medicine)
+    // we want to make sure we add known information
+    medicineInfo = Object.assign({}, knowMedicines[medicine["name"]], medicine);
+    addNewMedicine(medicine["name"],  medicineInfo)
+    showMedicine()
+  }
+
+  function showMedicineInfo(medicine){
+    // hide the medicine page and the new medicine form and footer
+    document.getElementById("medicinePage").setAttribute("hidden", "true")  
+    document.getElementById("newMedicinePage").setAttribute("hidden", "true")
+    document.getElementById("medicinePageFooter").setAttribute("hidden", "true")
+    document.getElementById("newMedicineFooter").setAttribute("hidden", "true")
+
+    // show the medicine info form
+    $("#medicineInfoPage").removeAttr("hidden")
+    $("#medicineInfoFooter").removeAttr("hidden") 
+    medicineInfo = getMedicineInfo(medicine)
+    html = "<div class = 'medInfo'><h2>" + medicine + "</h2> <br>"
+    html += "<b> What is it: </b>" + medicineInfo["what"] + "<br><br>"
+    html += "<b> What it treats: </b>" + medicineInfo["treats"] + "<br><br>"
+    html += "<b> How it works: </b>" + medicineInfo["how"] + "<br><br>"
+    html += "<b> How to use: </b>" + medicineInfo["usage"] + "<br> </div>"
+
+    $("#medicineInfoPage").html(html)
+    console.log(medicineInfo)
   }
 
   $(document).on('click', '#newMedicineButton', function () {
@@ -95,18 +153,31 @@
     // hide the new medicine button since theyre already on the new page
     // show the cancel button
     $("#newMedicineFooter").removeAttr("hidden") 
-    document.getElementById("landingPageFooter").setAttribute("hidden", "true")
+    document.getElementById("medicinePageFooter").setAttribute("hidden", "true")
+
+    // set up the selection form to have the names of the medicines that this
+    // app knows about.
+    html = "<option value='Empty'></option>"
+    for (medicine in knowMedicines) {
+      html += "<option value='" + medicine +"'> " + medicine +"</option>"
+    }
+    document.getElementById("MedicineName").innerHTML = html
   });
 
 
   $(document).on('click', '#cancelNewMedicineButton', function () {
+    // TODO: show cancel confirmation
     // hide the medicine page and show the new medicine form
-    $("#medicinePage").removeAttr("hidden")
-    document.getElementById("newMedicinePage").setAttribute("hidden", "true")
-    // hide the new medicine button since theyre already on the new page
-    // show the cancel button
-    $("#landingPageFooter").removeAttr("hidden") 
-    document.getElementById("newMedicineFooter").setAttribute("hidden", "true")
+    showMedicine()
+  });
+
+  $(document).on('click', '#exitMedicineInfoView', function () {
+    showMedicine()
+  });
+
+  $(document).on('click', '.medButton', function(ev) {
+    var medicine = $(this).attr('id');
+    showMedicineInfo(medicine)
   });
 
   // Finally load all the medicine from local storage and show it

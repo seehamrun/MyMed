@@ -1,11 +1,22 @@
 // Map of medicine name to the medicine properties
-// https://blog.logrocket.com/the-complete-guide-to-using-localstorage-in-javascript-apps-ba44edb53a36/
 currentMedicine = {}
 
 defaultMedicine = {
-	"Amoxicillin" : {}, 
-	"Ibuprofen" : {},
-	"Insulin" : {}
+	"Amoxicillin" : knowMedicines["Amoxicillin"],
+	"Ibuprofen" : {
+		"what": "What Ibuprofen is for",
+		"treats": "what Ibuprofen treats",
+		"how": "how Ibuprofen treats it",
+		"usage": "how to take Ibuprofen",
+		"notif": "off"
+	},
+	"Insulin" : {
+		"what": "What Insulin is for",
+		"treats": "what Insulin treats",
+		"how": "how Insulin treats it",
+		"usage": "how to take Insulin",
+		"notif": "on"
+	}
 }
 
 function loadMedicine() {
@@ -22,6 +33,10 @@ function loadMedicine() {
 
 function getMedicine() {
 	return currentMedicine;
+}
+
+function getMedicineInfo(medicine) {
+	return currentMedicine[medicine];
 }
 
 function getMedicineCount() {

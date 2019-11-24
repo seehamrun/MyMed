@@ -55,10 +55,10 @@ line-height:1pt;
   right:0;
   height:42px;
   line-height:42px;
-  background-color:#fff;
   padding:4pt 8pt 16pt 8pt;
   color:#222;
   overflow:hidden;
+  background-color: #1E2C43;                          
 }
 
 #app>footer {
@@ -68,7 +68,6 @@ line-height:1pt;
   right:0;
   height:24px;
   line-height:24px;
-  background-color:#fff;
   padding:8pt 8pt 8pt 8pt;
   color:#222;
 }
@@ -83,15 +82,17 @@ line-height:1pt;
   height: 400px;
   line-height:1.5;
   overflow:scroll;
+  background-color: #1E2C43;                          
 }
+
 #app * {
-  -webkit-touch-callout: none; /* iOS Safari */
-  -webkit-user-select: none;   /* Chrome/Safari/Opera */
-  -khtml-user-select: none;    /* Konqueror */
-  -moz-user-select: none;      /* Firefox */
-  -ms-user-select: none;       /* Internet Explorer/Edge */
-  user-select: none;           /* Non-prefixed version, currently
-                                  not supported by any browser */
+  -webkit-touch-callout: none; 
+  -webkit-user-select: none;   
+  -khtml-user-select: none;    
+  -moz-user-select: none;      
+  -ms-user-select: none;      
+  user-select: none;    
+
 }
 
 #app {
@@ -106,9 +107,11 @@ line-height:1pt;
   font-family:'Lato';
   font-size:9pt;
   line-height:1;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-   color:#333;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color:#333;
+  background-color: #1E2C43;                          
+
 }
 
 body {
@@ -195,28 +198,58 @@ main>footer .feature {
   float:left;
   width:20%;
   text-align:left;
+  color: white;
 }
 .centre {
   float:left;
   width:60%;
   text-align:center;
+  color: white;
 }
 .right {
   float:right;
   width:20%;
   text-align:right;
+  color: white;
 }
 
 .options{
   height: 100%; 
   width:100%;
+    color: white;
+
 }
 
 .medButton{
-  height: 100%; 
-  width:50%;
+  background-color: white;
+  width: 150px;
+  height: 25px;
+  font-size: 12pt;  
+  font-family:'Helvetica Neue';
+}
+
+.button{ 
+  background-color: white;
+  width: 150px;
+  height: 25px;
+  font-size: 12pt;
+  font-family:'Helvetica Neue';
+
 }
 
 #title{
   font-size: 30px;
+  color: white;
 }
+
+h2, label {
+  color: white;
+}
+h3 {
+  color: white;
+}
+
+.medInfo{
+  color: white;
+}
+
