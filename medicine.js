@@ -9,18 +9,21 @@ defaultMedicine = {
 		"how": "stops the growth of bacteria",
 		"usage": "Take this medication by mouth with or without food as " +
 				 "directed by your doctor, usually every 8 hours.",
+		"notif": "on"
 	}, 
 	"Ibuprofen" : {
 		"what": "What Ibuprofen is for",
 		"treats": "what Ibuprofen treats",
 		"how": "how Ibuprofen treats it",
-		"usage": "how to take Ibuprofen"
+		"usage": "how to take Ibuprofen",
+		"notif": "off"
 	},
 	"Insulin" : {
 		"what": "What Insulin is for",
 		"treats": "what Insulin treats",
 		"how": "how Insulin treats it",
-		"usage": "how to take Insulin"
+		"usage": "how to take Insulin",
+		"notif": "on"
 	}
 }
 
