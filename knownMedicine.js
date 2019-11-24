@@ -6,8 +6,9 @@ knowMedicines = {
 	  "usage": "Take this medication by mouth with or without food as " +
 	           "directed by your doctor, usually every 8 hours.",
 	  "sideEffects": [
-	  	
-	  ]
+	  
+	  ],
+    "notif" : "on"
   }, 
 
   // https://www.drugs.com/abilify.html
