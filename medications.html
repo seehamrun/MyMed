@@ -39,8 +39,7 @@
         <label>Name: </label>
         <select name="MedicineName" id="MedicineName">
           <option value="Empty"></option>
-          <option value="Amoxicillin">Amoxicillin</option>
-          <option value="Metformin">Metformin</option>
+          <!--The other options get filled in when this page is rendered -->
         </select>
 
         <br>
@@ -99,7 +98,7 @@
     container.innerHTML = ""
     for (medicine in getMedicine()) {
       console.log(medicine)
-      container.innerHTML += "<br><div class='row' align='center'> <input type='button' class='medButton' name='" + medicine +"' value='" + medicine + "' id='"+medicine+"'> </div><br>"
+      container.innerHTML += "<br><div class='row' align='center'> <button class='medButton' name='" + medicine +"' id='"+medicine+"'> " + medicine + "</button></div><br>"
     }
   }
 
