@@ -36,9 +36,8 @@
 
     <div class="page" id="newMedicinePage" hidden="true">
       <h2>New Medicaton</h2>
-      <form>
         <label>Name: </label>
-        <select name="Medicine Name">
+        <select name="MedicineName" id="MedicineName">
           <option value="Empty"></option>
           <option value="Amoxicillin">Amoxicillin</option>
           <option value="Metformin">Metformin</option>
@@ -46,15 +45,14 @@
 
         <br>
         <label>Dosage: </label>
-        <input type="number" name="dosageNum" min="1"> every <input type="number" name="frequencyNum" min="1"> <select name="frequency">
+        <input type="number" name="dosageNum" min="1" id="dosageNum"> every <input type="number" name="frequencyNum" min="1" id="frequencyNum"> <select name="frequency" id="frequency">
           <option value="Empty"></option>
           <option value="daily">day</option>
           <option value="hourly">hour</option>
           <option value="weekly">week</option>
         </select>
 
-        <input type="submit" name="submit">
-      </form>
+        <button id="medicineFormButton" onclick="medicineFormSubmitted()">Save Medicine</button>
     </div>
 
     <footer align="center">
@@ -80,6 +78,13 @@
 <script>
   // Reads medicine from local storage and shows it on the page.
   function showMedicine() {
+    // First make sure the medicine page isnt hidden
+    $("#medicinePage").removeAttr("hidden")
+    document.getElementById("newMedicinePage").setAttribute("hidden", "true")
+    // Make sure the new medicine footer isnt showing either.
+    $("#landingPageFooter").removeAttr("hidden") 
+    document.getElementById("newMedicineFooter").setAttribute("hidden", "true")
+
     container = document.getElementById("medicationsContainer")
     container.innerHTML = ""
     for (medicine in getMedicine()) {
@@ -87,6 +92,24 @@
       container.innerHTML += "<div class='row' align='center'> <input type='button' class='medButton' name='" + medicine +"' value='" + medicine + "'> </div><br>"
     }
   }
+
+  function medicineFormSubmitted(){
+    medicine = {
+      "name": document.getElementById("MedicineName").value,
+      "dosageNum": document.getElementById("dosageNum").value,
+      "frequencyNum": document.getElementById("frequencyNum").value,
+      "frequency": document.getElementById("frequency").value,      
+    }
+    showConfirmation(medicine)
+  }
+
+  function showConfirmation(medicine) {
+    console.log(medicine)
+    addNewMedicine(medicine["name"], medicine)
+    showMedicine()
+  }
+
+
 
   $(document).on('click', '#newMedicineButton', function () {
     // hide the medicine page and show the new medicine form
@@ -100,14 +123,12 @@
 
 
   $(document).on('click', '#cancelNewMedicineButton', function () {
+    // TODO: show cancel confirmation
     // hide the medicine page and show the new medicine form
-    $("#medicinePage").removeAttr("hidden")
-    document.getElementById("newMedicinePage").setAttribute("hidden", "true")
-    // hide the new medicine button since theyre already on the new page
-    // show the cancel button
-    $("#landingPageFooter").removeAttr("hidden") 
-    document.getElementById("newMedicineFooter").setAttribute("hidden", "true")
+    showMedicine()
   });
+
+
 
   // Finally load all the medicine from local storage and show it
   loadMedicine()
