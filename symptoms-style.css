@@ -205,18 +205,16 @@ main>footer .feature {
   width:20%;
   text-align:right;
 }
-
 .options{
   height: 100%;
   width:100%;
 }
-#title{
-  font-size: 100px;
-  text-align:center;
-
+.symButton{
+  height: 100%;
+  width:100%;
 }
 
-#button1{
-  font-size: 50px;
-  text-align: center;
+#title{
+  font-size: 30px;
+  text-align:center;
 }

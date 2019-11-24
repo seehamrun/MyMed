@@ -1,5 +1,6 @@
 <link rel="stylesheet" href="style.css">
 
+
 <header>
   <h1>MyMed</h1>
 </header>
@@ -28,28 +29,22 @@
        <span class="ion-navicon"></span>
       </div>
     </header>
+
     <div class="page">
-      <br>
-      <br>
-      <br>
+
       <div class="container" id="symptomsContainer">
-        <div class="row" align="center">
-          <a href="mySymptoms.html"><input type="button" class="medButton" name="mySymp" value="My Symptoms"></a>
-        </div>
-        <br>
-        <br>
-        <br>
-        <div class="row" align="center">
-          <a href="medSymptoms.html"><input type="button" class="medButton" name="medSymp" value="Medication Symptoms"></a>
-        </div>
+
       </div>
+
     </div>
+
     <footer align="center">
       <div id="landingFooter">
         <a href="home.html"><input type="button" name="Home" value="Home"></a>
+        <a href="Symptoms.html"><input type="button" name="Back" value="Back"></a>
       </div>
-
     </footer>
+
   </div>
 
   <footer>
@@ -57,3 +52,27 @@
   </footer>
 
 </main>
+
+<script src="medicine.js"></script>
+<script>
+  // Reads medicine from local storage and shows it on the page.
+  function showMedicine() {
+    container = document.getElementById("symptomsContainer")
+    container.innerHTML = ""
+    for (medicine in getMedicine()) {
+      console.log(medicine)
+      container.innerHTML += "<div class='row' align='center'> <input type='button' class='medButton' onClick='displaySymptom()' name='" + medicine +"' value='" + medicine + "' id = '"+ medicine +"'> </div><br>"
+
+    }
+  }
+
+  //display symptoms per medication
+  function displaySymptom(){
+
+  }
+
+  //load and display medications that can have symptoms
+  loadMedicine()
+  showMedicine()
+
+</script>
