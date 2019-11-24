@@ -72,8 +72,6 @@
       </div>
     </footer>
   </div>
- 
-  
 
   <footer>
     <div class="feature"></div>
@@ -82,6 +80,7 @@
 
 
 <script src="medicine.js"></script>
+<script src="knownMedicine.js"></script>
 <script>
   // Reads medicine from local storage and shows it on the page.
   function showMedicine() {
@@ -115,8 +114,11 @@
   }
 
   function showConfirmation(medicine) {
+    // TODO: actually show a confirmation page
     console.log(medicine)
-    addNewMedicine(medicine["name"], medicine)
+    // we want to make sure we add known information
+    medicineInfo = Object.assign({}, knowMedicines[medicine["name"]], medicine);
+    addNewMedicine(medicine["name"],  medicineInfo)
     showMedicine()
   }
 
@@ -149,6 +151,14 @@
     // show the cancel button
     $("#newMedicineFooter").removeAttr("hidden") 
     document.getElementById("medicinePageFooter").setAttribute("hidden", "true")
+
+    // set up the selection form to have the names of the medicines that this
+    // app knows about.
+    html = "<option value='Empty'></option>"
+    for (medicine in knowMedicines) {
+      html += "<option value='" + medicine +"'> " + medicine +"</option>"
+    }
+    document.getElementById("MedicineName").innerHTML = html
   });
 
 
