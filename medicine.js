@@ -3,9 +3,25 @@
 currentMedicine = {}
 
 defaultMedicine = {
-	"Amoxicillin" : {}, 
-	"Ibuprofen" : {},
-	"Insulin" : {}
+	"Amoxicillin" : {
+		"what": "This medication is a penicillin type antibiotic",
+		"treats": "bacterial infections",
+		"how": "stops the growth of bacteria",
+		"usage": "Take this medication by mouth with or without food as " +
+				 "directed by your doctor, usually every 8 hours.",
+	}, 
+	"Ibuprofen" : {
+		"what": "What Ibuprofen is for",
+		"treats": "what Ibuprofen treats",
+		"how": "how Ibuprofen treats it",
+		"usage": "how to take Ibuprofen"
+	},
+	"Insulin" : {
+		"what": "What Insulin is for",
+		"treats": "what Insulin treats",
+		"how": "how Insulin treats it",
+		"usage": "how to take Insulin"
+	}
 }
 
 function loadMedicine() {
@@ -22,6 +38,10 @@ function loadMedicine() {
 
 function getMedicine() {
 	return currentMedicine;
+}
+
+function getMedicineInfo(medicine) {
+	return currentMedicine[medicine];
 }
 
 function getMedicineCount() {
