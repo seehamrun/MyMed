@@ -242,6 +242,9 @@ main>footer .feature {
   color: white;
 }
 
+h2, label {
+  color: white;
+}
 h3 {
   color: white;
 }

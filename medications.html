@@ -44,7 +44,7 @@
 
         <br>
         <label>Number of Dosages: </label>
-        <input type="number" name="dosageNum" min="1" id="dosageNum"> every <input type="number" name="frequencyNum" min="1" id="frequencyNum"> <select name="frequency" id="frequency">
+        <input type="number" name="dosageNum" min="1" id="dosageNum"> <label>every</label> <input type="number" name="frequencyNum" min="1" id="frequencyNum"> <select name="frequency" id="frequency">
           <option value="Empty"></option>
           <option value="daily">day</option>
           <option value="hourly">hour</option>
@@ -67,7 +67,7 @@
         <input type='button' id='cancelNewMedicineButton' name='Cancel' value="x"> 
       </div>
       <div id="medicineInfoFooter" hidden="true">
-        <input type='button' id='exitMedicineInfoView' name='exit' value="✔️"> 
+       <button id='exitMedicineInfoView' name='exit'>✔️</button> 
       </div>
     </footer>
   </div>
@@ -98,7 +98,7 @@
     container.innerHTML = ""
     for (medicine in getMedicine()) {
       console.log(medicine)
-      container.innerHTML += "<br><div class='row' align='center'> <button class='medButton' name='" + medicine +"' id='"+medicine+"'> " + medicine + "</button></div><br>"
+      container.innerHTML += "<br><div align='center'> <button class='medButton' name='" + medicine +"' id='"+medicine+"'> " + medicine + "</button></div><br>"
     }
   }
 
@@ -134,7 +134,7 @@
     medicineInfo = getMedicineInfo(medicine)
     html = "<div class = 'medInfo'><h2>" + medicine + "</h2> <br>"
     html += "<b> What is it: </b>" + medicineInfo["what"] + "<br><br>"
-    html += "<b> What it treats: </b>" + medicineInfo["treats"] + "<br>v"
+    html += "<b> What it treats: </b>" + medicineInfo["treats"] + "<br>"
     html += "<b> How it works: </b>" + medicineInfo["how"] + "<br><br>"
     html += "<b> How to use: </b>" + medicineInfo["usage"] + "<br> </div>"
 
