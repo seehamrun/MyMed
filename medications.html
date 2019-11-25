@@ -63,6 +63,13 @@
     <div class="page" id="confirmMedicinePage" hidden="true">
     </div>
 
+    <div class="page" id="newMedicineCancelPage" hidden="true">
+      <h2> Are you sure? </h2>
+      <div class="medInfo"> All progress will be lost</div>
+      <button id='goBackToMedicineFormButton' onclick="goBackToFilledMedicineForm()">x</button>  
+      <button id='cancelAddButton' onclick="showMedicine()">✔️</button>
+    </div>
+
 
     <footer align="center">
       <div id="medicinePageFooter">
@@ -76,8 +83,8 @@
        <button id='exitMedicineInfoView' name='exit'>✔️</button> 
       </div>
       <div id="confirmMedicineFooter" hidden="true">
-        <button id='confirmNewMedicineButton' name='confirm' onclick="confirmAdd()">✔️</button>
         <button id='cancelConfirmNewMedicineButton' name='cancel' onclick="goBackToFilledMedicineForm()">x</button>  
+        <button id='confirmNewMedicineButton' name='confirm' onclick="confirmAdd()">✔️</button>
       </div>
     </footer>
   </div>
@@ -108,6 +115,7 @@
     document.getElementById("medicineInfoFooter").setAttribute("hidden", "true")
     document.getElementById("confirmMedicinePage").setAttribute("hidden", "true")
     document.getElementById("confirmMedicineFooter").setAttribute("hidden", "true")
+    document.getElementById("newMedicineCancelPage").setAttribute("hidden", "true")
 
     // Now list out all the medicine content
     container = document.getElementById("medicationsContainer")
@@ -174,6 +182,7 @@
     document.getElementById("medicineInfoFooter").setAttribute("hidden", "true")
     document.getElementById("newMedicineFooter").setAttribute("hidden", "true")
     document.getElementById("newMedicineFooter").setAttribute("hidden", "true")
+    document.getElementById("newMedicineCancelPage").setAttribute("hidden", "true")
 
     // show the medicine confirmation page
     $("#newMedicinePage").removeAttr("hidden")
@@ -223,9 +232,11 @@
 
 
   $(document).on('click', '#cancelNewMedicineButton', function () {
-    // TODO: show cancel confirmation
     // hide the medicine page and show the new medicine form
-    showMedicine()
+    document.getElementById("newMedicinePage").setAttribute("hidden", "true")
+    document.getElementById("newMedicineFooter").setAttribute("hidden", "true")
+    $("#newMedicineCancelPage").removeAttr("hidden")
+    // showMedicine()
   });
 
   $(document).on('click', '#exitMedicineInfoView', function () {
