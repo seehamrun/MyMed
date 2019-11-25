@@ -141,7 +141,7 @@ knownMedicines = {
     "what": "an injected hormone",
     "treats": "used to improve blood sugar control in adults and children with diabetes mellitus",
     "how": "works by lowering levels of glucose (sugar) in the blood",
-    "usage": "Regular insulin is injected under the skin. A healthcare provider may teach you how to properly use the medication by yourself. Regular insulin must not be given with a pump. Do not inject this medicine into a vein or a muscle.",
+    "usage": "Regular insulin is injected under the skin. Regular insulin must not be given with a pump. Do not inject this medicine into a vein or a muscle.",
     "sideEffects": [
       "low blood sugar",
       "swelling",
