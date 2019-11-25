@@ -80,7 +80,8 @@
         <button id='cancelNewMedicineButton' name='Cancel'>x</button> 
       </div>
       <div id="medicineInfoFooter" hidden="true">
-       <button id='exitMedicineInfoView' name='exit'>✔️</button> 
+        <button id='deleteMedicineButton' value="" name='exit' onclick="deleteMed()">Delete</button> 
+        <button id='exitMedicineInfoView' name='exit'>✔</button> 
       </div>
       <div id="confirmMedicineFooter" hidden="true">
         <button id='cancelConfirmNewMedicineButton' name='cancel' onclick="goBackToFilledMedicineForm()">x</button>  
@@ -201,6 +202,8 @@
     // show the medicine info form
     $("#medicineInfoPage").removeAttr("hidden")
     $("#medicineInfoFooter").removeAttr("hidden") 
+    document.getElementById("deleteMedicineButton").setAttribute("value", medicine)
+
     medicineInfo = getMedicineInfo(medicine)
     html = "<div class = 'medInfo'><h2>" + medicine + "</h2> <br>"
     html += "<b> What is it: </b>" + medicineInfo["what"] + "<br><br>"
@@ -210,6 +213,13 @@
 
     $("#medicineInfoPage").html(html)
     console.log(medicineInfo)
+  }
+
+  function deleteMed(){
+    medicineToDelete = document.getElementById("deleteMedicineButton").value
+    // TODO: add confirmation
+    deleteMedicine(medicineToDelete)
+    showMedicine()
   }
 
   $(document).on('click', '#newMedicineButton', function () {
