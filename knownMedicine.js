@@ -125,7 +125,7 @@ knownMedicines = {
     "usage": "",
     "sideEffects": [
       "changes of vision", 
-      "hearburt",
+      "hearburn",
       "shortness of breath",
       "liver problems",
       "kidney stones",
