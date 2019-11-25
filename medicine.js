@@ -15,7 +15,6 @@ function loadMedicine() {
 	} else {
 		currentMedicine = currentMedicineData
 	}
-
 	console.log(currentMedicine);
 }
 

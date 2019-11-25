@@ -44,17 +44,23 @@
 
         <br>
         <label>Number of Dosages: </label>
-        <input type="number" name="dosageNum" min="1" id="dosageNum"> <label>every</label> <input type="number" name="frequencyNum" min="1" id="frequencyNum"> <select name="frequency" id="frequency">
+        <input type="number" name="dosageNum" min="1" id="dosageNum"> <br>
+
+        <label>Frequency: every</label> <input type="number" name="frequencyNum" min="1" id="frequencyNum"> 
+        <select name="frequency" id="frequency">
           <option value="Empty"></option>
-          <option value="daily">day</option>
-          <option value="hourly">hour</option>
-          <option value="weekly">week</option>
+          <option value="day">day</option>
+          <option value="hour">hour</option>
+          <option value="week">week</option>
         </select>
 
         <button id="medicineFormButton" onclick="medicineFormSubmitted()">Save Medicine</button>
     </div>
 
     <div class="page" id="medicineInfoPage" hidden="true">
+    </div>
+
+    <div class="page" id="confirmMedicinePage" hidden="true">
     </div>
 
 
@@ -64,10 +70,14 @@
         <a href="index.html"><input type="button" name="Home" value="Home"></a>
       </div>
       <div id="newMedicineFooter" hidden="true">
-        <input type='button' id='cancelNewMedicineButton' name='Cancel' value="x"> 
+        <button id='cancelNewMedicineButton' name='Cancel'>x</button> 
       </div>
       <div id="medicineInfoFooter" hidden="true">
        <button id='exitMedicineInfoView' name='exit'>✔️</button> 
+      </div>
+      <div id="confirmMedicineFooter" hidden="true">
+        <button id='confirmNewMedicineButton' name='confirm' onclick="confirmAdd()">✔️</button>
+        <button id='cancelConfirmNewMedicineButton' name='cancel'>x</button>  
       </div>
     </footer>
   </div>
@@ -96,6 +106,8 @@
     document.getElementById("newMedicineFooter").setAttribute("hidden", "true")
     document.getElementById("medicineInfoPage").setAttribute("hidden", "true")
     document.getElementById("medicineInfoFooter").setAttribute("hidden", "true")
+    document.getElementById("confirmMedicinePage").setAttribute("hidden", "true")
+    document.getElementById("confirmMedicineFooter").setAttribute("hidden", "true")
 
     // Now list out all the medicine content
     container = document.getElementById("medicationsContainer")
@@ -113,15 +125,44 @@
       "frequencyNum": document.getElementById("frequencyNum").value,
       "frequency": document.getElementById("frequency").value,      
     }
-    showConfirmation(medicine)
+    // TODO: verify the info populated is correct
+    medicineInfo = Object.assign({}, knownMedicines[medicine["name"]], medicine);
+    showConfirmation(medicineInfo)
   }
 
-  function showConfirmation(medicine) {
-    // TODO: actually show a confirmation page
-    console.log(medicine)
-    // we want to make sure we add known information
-    medicineInfo = Object.assign({}, knownMedicines[medicine["name"]], medicine);
-    addNewMedicine(medicine["name"],  medicineInfo)
+  function showConfirmation(medicineInfo) {
+    console.log("Showing confirmation page for: ")
+    console.log(medicineInfo)
+
+    // hide the other pages
+    document.getElementById("newMedicinePage").setAttribute("hidden", "true")
+    document.getElementById("newMedicineFooter").setAttribute("hidden", "true")
+    document.getElementById("medicineInfoPage").setAttribute("hidden", "true")
+    document.getElementById("medicineInfoFooter").setAttribute("hidden", "true")
+    document.getElementById("newMedicineFooter").setAttribute("hidden", "true")
+    document.getElementById("newMedicineFooter").setAttribute("hidden", "true")
+
+    // show the medicine confirmation page
+    $("#confirmMedicinePage").removeAttr("hidden")
+    $("#confirmMedicineFooter").removeAttr("hidden")
+    html = "<div class = 'medInfo'><h2> Does this look OK? </h2>"
+    html += "<b>Name:</b>" + medicineInfo["name"] + "<br><br>"
+    html += "<b>Numer of Doses:</b> " + medicineInfo["dosageNum"] + "<br><br>"
+    html += "<b>Frequency:</b> every " + medicineInfo["frequencyNum"] + " " + medicineInfo["frequency"]
+    if(medicineInfo["frequencyNum"] > 1) {
+      html += "s"
+    }
+    html += "</div>"
+
+    document.getElementById("confirmMedicinePage").innerHTML = html
+  }
+
+  function confirmAdd(){
+    addNewMedicine(medicineInfo["name"],  medicineInfo)
+    // clear the form info
+    document.getElementById("dosageNum").value = ""
+    document.getElementById("frequencyNum").value = ""
+    document.getElementById("frequency").value = ""
     showMedicine()
   }
 
@@ -129,8 +170,10 @@
     // hide the medicine page and the new medicine form and footer
     document.getElementById("medicinePage").setAttribute("hidden", "true")  
     document.getElementById("newMedicinePage").setAttribute("hidden", "true")
+    document.getElementById("confirmMedicinePage").setAttribute("hidden", "true")
     document.getElementById("medicinePageFooter").setAttribute("hidden", "true")
     document.getElementById("newMedicineFooter").setAttribute("hidden", "true")
+    document.getElementById("confirmMedicineFooter").setAttribute("hidden", "true")
 
     // show the medicine info form
     $("#medicineInfoPage").removeAttr("hidden")
