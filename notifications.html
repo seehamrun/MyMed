@@ -39,22 +39,22 @@
 
     <div class="page" id="medicineNotification" hidden="true">
       <label class="switch">
-        <input onclick="setDosages()"type="checkbox">
+        <input onclick="showDosages()" type="checkbox" id="notificationsEnabled">
         <span class="slider round"></span>
       </label>
       <br> <br> <br>
-      <table>
+      <table id="dosages">
         <tr>
           <td><label> Dose 1</label></td>
-          <td><input type="text" name="dose1" value="Ex. 6:00am"></td>
+          <td><input type="time" name="dose1"></td>
         </tr>
         <tr>
           <td><label> Dose 2</label></td>
-          <td><input type="text" name="dose2" value="Ex. 6:00am"></td>
+          <td><input type="time" name="dose2"></td>
         </tr>
         <tr>
             <td><label> Dose 3</label></td>
-            <td><input type="text" name="dose3" value="Ex. 6:00am"></td>
+            <td><input type="time" name="dose3"></td>
         </tr>
       </table>
     </div>
@@ -85,25 +85,33 @@
     for (medicine in allMeds) {
       console.log(allMeds[medicine])
       if (allMeds[medicine]["notif"] == "on"){
-        container.innerHTML += "<div align='center'> <button class='medButton' onClick='displayNotificationPage()' name='" + medicine +"' id = '"+ medicine +"'> " + medicine + "   <img src ='icons/notif.png' height= 10px width = 10px></button> </div><br>"
+        container.innerHTML += "<div align='center'> <button class='medButton' onClick='displayNotificationPage(id)' name='" + medicine +"' id = '"+ medicine +"'> " + medicine + "   <img src ='icons/notif.png' height= 10px width = 10px></button> </div><br>"
       }
       else {
-        container.innerHTML += "<div align='center'> <button class='medButton' onClick='displayNotificationPage()' name='" + medicine +"' id = '"+ medicine +"'> " + medicine + "   <img src ='icons/offNotif.png' height= 13px width = 13px ></button> </div><br>"
+        container.innerHTML += "<div align='center'> <button class='medButton' onClick='displayNotificationPage(id)' name='" + medicine +"' id = '"+ medicine +"'> " + medicine + "   <img src ='icons/offNotif.png' height= 13px width = 13px ></button> </div><br>"
 
       }
-
     }
-     // <img src ="icons/notif.png"> <img src ="icons/offNotif.png"
-    // <button class="button"> <img src ="icons/pill.png" height= "15" width="15"> Medications </button>
+  }
+
+  function showDosages() {
+    console.log($("#notificationsEnabled").attr("checked"))
   }
 
 //pull up the notification page for each medication
-  function displayNotificationPage(){
+  function displayNotificationPage(medicineName){
+    console.log(medicineName)
     document.getElementById("notificationsContainer").setAttribute("hidden", "true")
     $("#medicineNotification").removeAttr("hidden")
 
     document.getElementById("notificationPageFooter").setAttribute("hidden","true")
     $("#medNotifFooter").removeAttr("hidden")
+
+    console.log(getMedicineInfo(medicineName))
+    if(getMedicineInfo(medicineName)["notif"] == "on") {
+      console.log("notifications on")
+      $("#notificationsEnabled").attr("checked", "true")
+    }
 
   }
 

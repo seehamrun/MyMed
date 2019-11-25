@@ -133,7 +133,7 @@ knownMedicines = {
       "bloating",
       "dizziness",
     ],
-    "notif": "off"
+    "notif": "on"
   },
 
   // https://www.drugs.com/insulin.html
