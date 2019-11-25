@@ -103,7 +103,7 @@ line-height:1pt;
   border:1px solid #999;
   position:relative;
   text-align:left;
-  overflow:hidden;
+  overflow:scroll;
   font-family:'Lato';
   font-size:9pt;
   line-height:1;
@@ -249,11 +249,10 @@ main>footer .feature {
 }
 
 .symButton{
-  width: 150px;
+  width: 100px;
   height: 80px;
   border-radius: 12pt;
-    font-size: 13pt;
-
+  font-size: 13pt;
 }
 
 h2, label {
