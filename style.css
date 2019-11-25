@@ -243,6 +243,10 @@ main>footer .feature {
   font-size: 30px;
   color: white;
 }
+#bigTitle{
+  font-size: 20px;
+  color: white; 
+}
 
 .symButton{
   width: 100px;
