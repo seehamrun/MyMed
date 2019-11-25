@@ -44,33 +44,35 @@
       <h2>New Symptom</h2>
       <table>
         <tr>
-          <th><input id="Drowsiness" type="button" name="drowsy" value="Drowsiness"></th>
-          <th><input id="Fever" type="button" name="fever" value="Fever"></th>
+
+          <th><input type="button" name="drowsy" value="Drowsiness" onclick="submitSymptomForm('Drowsiness')"></th>
+          <th><input type="button" name="fever" value="Fever" onclick="submitSymptomForm('Fever')"></th>
         </tr>
         <tr>
-          <th><input id="Constipation" type="button" name="constipation" value="Constipation"></th>
-          <th><input id="Nausea" type="button" name="nausea" value="Nausea"></th>
+          <th><input type="button" name="constipation" value="Constipation" onclick="submitSymptomForm('Constipation')"></th>
+          <th><input type="button" name="nausea" value="Nausea" onclick="submitSymptomForm('Nausea')"></th>
         </tr>
         <tr>
-          <th><input id="Skin Rash" type="button" name="rash" value="Skin Rash"></th>
-          <th><input id="Headaches" type="button" name="headache" value="Headaches"></th>
+          <th><input type="button" name="rash" value="Skin Rash" onclick="submitSymptomForm('Skin Rash')"></th>
+          <th><input type="button" name="headache" value="Headache" onclick="submitSymptomForm('Headache')"></th>
+
         </tr>
       </table>
 
       <h3>Don't See Your Symptom? </h3>
-      <input type="text" name="otherSymp" value="Enter it Here">
+      <input type="text" id="otherSymp" name="otherSymp" value="Enter it Here">
+      <input type="button" name="Save" value="Save" onclick="submitManualForm()">
     </div>
 
     <footer align="center">
       <div id="landingFooter">
         <a href="Symptoms.html"><input type="button" name="Back" value="Back"></a>
         <a href="index.html"><input type="button" name="Home" value="Home"></a>
-        <input onclick="addSymptom()" type="button" name="Add" value="Add">
+        <input onclick="addSymptomForm()" type="button" name="Add" value="Add">
       </div>
 
       <div id="newSymptomFooter" hidden="true">
         <a href="index.html"><input type="button" name="Home" value="Home"></a>
-        <input onclick="saveSymptoms()" type="button" name="Save" value="Save">
       </div>
     </footer>
 
@@ -84,25 +86,26 @@
 
 <script src="knownMedicine.js"></script>
 <script src="medicine.js"></script>
+<script src="symptoms.js"></script>
 
 <script>
-defaultSymptoms = {
-  	"Heart Burn" : {},
-  	"Nausea" : {},
-    "Hair Loss" : {}
-  }
   // Reads medicine from local storage and shows it on the page.
   function showSymptoms() {
+    $("#symptomsContainer").removeAttr("hidden")
+    $("#landingFooter").removeAttr("hidden")
+
+    document.getElementById("newSymptomPage").setAttribute("hidden", "true")
+    document.getElementById("newSymptomFooter").setAttribute("hidden","true")
+
     container = document.getElementById("symptomsContainer")
     container.innerHTML = ""
-    for (symptom in defaultSymptoms) {
+    for (symptom in getSymptoms()) {
       console.log(symptom)
       container.innerHTML += "<div class='row' align='center'> <input type='button' class='medButton' name='" + symptom +"' value='" + symptom + "' id = '"+ symptom +"'> </div><br>"
     }
   }
 
-//Show the add symptoms screen when add button is clicked
-  function addSymptom(){
+  function addSymptomForm(){
     document.getElementById("symptomsContainer").setAttribute("hidden", "true")
     document.getElementById("landingFooter").setAttribute("hidden","true")
 
@@ -110,11 +113,18 @@ defaultSymptoms = {
     $("#newSymptomFooter").removeAttr("hidden")
   }
 
-
-  function saveSymptomsForm(){
-
+  function submitManualForm() {
+    submitSymptomForm(document.getElementById("otherSymp").value)
   }
+
+  function submitSymptomForm(sym){
+    console.log(sym)
+    addSymptom(sym)
+    showSymptoms()
+  }
+
   //load and display medications that can have symptoms
+  loadMySymptoms()
   showSymptoms()
 
 </script>

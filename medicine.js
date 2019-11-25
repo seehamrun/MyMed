@@ -35,8 +35,10 @@ function addNewMedicine(medName, medProperties) {
 	savestate("medicine", currentMedicine)
 }
 
-function deleteMedicine() {
+function deleteMedicine(medName) {
 	// delete from local storage
+	delete currentMedicine[medName]
+	savestate("medicine", currentMedicine)
 }
 
 

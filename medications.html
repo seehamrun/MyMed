@@ -23,7 +23,7 @@
       <div class="left">
       <span class="ion-chevron-left"></span>
       </div>
-      <div id = "title" align="center">MyMed</div>
+      <div id = "title" align="center">MyMedications</div>
       <div class="right">
        <span class="ion-navicon"></span>
       </div>
@@ -63,6 +63,9 @@
     <div class="page" id="confirmMedicinePage" hidden="true">
     </div>
 
+    <div class="page" id="confirmDeleteMedicinePage" hidden="true">
+    </div>
+
     <div class="page" id="newMedicineCancelPage" hidden="true">
       <h2> Are you sure? </h2>
       <div class="medInfo"> All progress will be lost</div>
@@ -80,7 +83,8 @@
         <button id='cancelNewMedicineButton' name='Cancel'>x</button> 
       </div>
       <div id="medicineInfoFooter" hidden="true">
-       <button id='exitMedicineInfoView' name='exit'>✔️</button> 
+        <button id='deleteMedicineButton' value="" name='exit' onclick="deleteMed()">Delete</button> 
+        <button id='exitMedicineInfoView' name='exit'>✔</button> 
       </div>
       <div id="confirmMedicineFooter" hidden="true">
         <button id='cancelConfirmNewMedicineButton' name='cancel' onclick="goBackToFilledMedicineForm()">x</button>  
@@ -116,6 +120,7 @@
     document.getElementById("confirmMedicinePage").setAttribute("hidden", "true")
     document.getElementById("confirmMedicineFooter").setAttribute("hidden", "true")
     document.getElementById("newMedicineCancelPage").setAttribute("hidden", "true")
+    document.getElementById("confirmDeleteMedicinePage").setAttribute("hidden", "true")
 
     // Now list out all the medicine content
     container = document.getElementById("medicationsContainer")
@@ -149,6 +154,7 @@
     document.getElementById("medicineInfoFooter").setAttribute("hidden", "true")
     document.getElementById("newMedicineFooter").setAttribute("hidden", "true")
     document.getElementById("newMedicineFooter").setAttribute("hidden", "true")
+    document.getElementById("confirmDeleteMedicinePage").setAttribute("hidden", "true")
 
     // show the medicine confirmation page
     $("#confirmMedicinePage").removeAttr("hidden")
@@ -183,6 +189,8 @@
     document.getElementById("newMedicineFooter").setAttribute("hidden", "true")
     document.getElementById("newMedicineFooter").setAttribute("hidden", "true")
     document.getElementById("newMedicineCancelPage").setAttribute("hidden", "true")
+    document.getElementById("confirmMedicineFooter").setAttribute("hidden", "true")
+    document.getElementById("confirmDeleteMedicinePage").setAttribute("hidden", "true")
 
     // show the medicine confirmation page
     $("#newMedicinePage").removeAttr("hidden")
@@ -197,10 +205,13 @@
     document.getElementById("medicinePageFooter").setAttribute("hidden", "true")
     document.getElementById("newMedicineFooter").setAttribute("hidden", "true")
     document.getElementById("confirmMedicineFooter").setAttribute("hidden", "true")
+    document.getElementById("confirmDeleteMedicinePage").setAttribute("hidden", "true")
 
     // show the medicine info form
     $("#medicineInfoPage").removeAttr("hidden")
     $("#medicineInfoFooter").removeAttr("hidden") 
+    document.getElementById("deleteMedicineButton").setAttribute("value", medicine)
+
     medicineInfo = getMedicineInfo(medicine)
     html = "<div class = 'medInfo'><h2>" + medicine + "</h2> <br>"
     html += "<b> What is it: </b>" + medicineInfo["what"] + "<br><br>"
@@ -210,6 +221,29 @@
 
     $("#medicineInfoPage").html(html)
     console.log(medicineInfo)
+  }
+
+  function deleteMed(){
+    medicineToDelete = document.getElementById("deleteMedicineButton").value
+    // Hide the medicineINfo page thats showing
+    document.getElementById("medicineInfoPage").setAttribute("hidden", "true")
+    document.getElementById("medicineInfoFooter").setAttribute("hidden", "true")
+
+    $("#confirmDeleteMedicinePage").removeAttr("hidden")
+    html = "<div class='medInfo' align='center'>"
+    html += "<h2> Are you sure you want to delete " + medicineToDelete + " from your medicine list?<h2>"
+    html += "This can not be undone - you will have to readd the medince manually."
+    html += "<button id='" + medicineToDelete+ "' onclick='deleteMedConfirmed(id)'>Delete</button>" 
+    html += "<br><br>"
+    html += "<button id='" + medicineToDelete +"' onclick='showMedicineInfo(id)'>Cancel</button>" 
+    html += "</div>"
+    $("#confirmDeleteMedicinePage").html(html)
+
+  }
+
+  function deleteMedConfirmed(medicine){
+    deleteMedicine(medicine)
+    showMedicine()  
   }
 
   $(document).on('click', '#newMedicineButton', function () {
