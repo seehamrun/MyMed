@@ -34,14 +34,18 @@
 
       <div class="container" id="symptomsContainer">
 
+      //make div for symptoms info for each medicine
       </div>
 
     </div>
 
-    <footer align="center">
+    <footer align="center" id="SymptomsContainer">
       <div id="landingFooter">
         <a href="home.html"><input type="button" name="Home" value="Home"></a>
         <a href="Symptoms.html"><input type="button" name="Back" value="Back"></a>
+      </div>
+      <div id="medicineInfoFooter" hidden="true">
+       <button id='exitMedicineInfoView' name='exit'>✔️</button>
       </div>
     </footer>
 
@@ -53,10 +57,12 @@
 
 </main>
 
+<script src="knownMedicine.js"></script>
 <script src="medicine.js"></script>
 <script>
   // Reads medicine from local storage and shows it on the page.
   function showMedicine() {
+
     container = document.getElementById("symptomsContainer")
     container.innerHTML = ""
     for (medicine in getMedicine()) {
@@ -66,9 +72,21 @@
     }
   }
 
-  //display symptoms per medication
-  function displaySymptom(){
+  function showSymptomInfo(medicine){
+    // hide the medicine page and the new medicine form and footer
+    document.getElementById("SymptomsContainer").setAttribute("hidden", "true")
+    document.getElementById("SymptomsPageFooter").setAttribute("hidden", "true")
 
+
+    // show the medicine info form
+    $("#medicineInfoPage").removeAttr("hidden")
+    $("#medicineInfoFooter").removeAttr("hidden")
+    medicineInfo = getMedicineInfo(medicine)
+    html = "<div class = 'medInfo'><h2>" + medicine + "</h2> <br>"
+    html += "<b> Symptoms </b>" + medicineInfo["SideEffects"] + "<br> </div>"
+
+    $("#medicineInfoPage").html(html)
+    console.log(medicineInfo)
   }
 
   //load and display medications that can have symptoms

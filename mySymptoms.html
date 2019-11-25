@@ -51,17 +51,20 @@
     </footer>
   </div>
 
-  <footer>
+  <footer id="SymptomsFooter">
     <div class="feature"></div>
   </footer>
 
 </main>
 
+<script src="knownMedicine.js"></script>
 <script src="medicine.js"></script>
+
 <script>
 defaultSymptoms = {
   	"Heart Burn" : {},
   	"Nausea" : {},
+    "Hair Loss" : {}
   }
   // Reads medicine from local storage and shows it on the page.
   function showSymptoms() {
@@ -74,13 +77,10 @@ defaultSymptoms = {
     }
   }
 
-  //display symptoms per medication
-  function displaySymptom(){
 
-  }
 
   function addSymptom(){
-    
+
   }
 
   //load and display medications that can have symptoms
