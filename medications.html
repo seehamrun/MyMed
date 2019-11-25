@@ -61,7 +61,7 @@
     <footer align="center">
       <div id="medicinePageFooter">
         <input type='button' id='newMedicineButton' name='New medicine' value="+">
-        <a href="home.html"><input type='button' class='' name='Home' value="Home"></a>
+        <a href="index.html"><input type="button" name="Home" value="Home"></a>
       </div>
       <div id="newMedicineFooter" hidden="true">
         <input type='button' id='cancelNewMedicineButton' name='Cancel' value="x"> 
@@ -120,7 +120,7 @@
     // TODO: actually show a confirmation page
     console.log(medicine)
     // we want to make sure we add known information
-    medicineInfo = Object.assign({}, knowMedicines[medicine["name"]], medicine);
+    medicineInfo = Object.assign({}, knownMedicines[medicine["name"]], medicine);
     addNewMedicine(medicine["name"],  medicineInfo)
     showMedicine()
   }
@@ -158,7 +158,7 @@
     // set up the selection form to have the names of the medicines that this
     // app knows about.
     html = "<option value='Empty'></option>"
-    for (medicine in knowMedicines) {
+    for (medicine in knownMedicines) {
       html += "<option value='" + medicine +"'> " + medicine +"</option>"
     }
     document.getElementById("MedicineName").innerHTML = html

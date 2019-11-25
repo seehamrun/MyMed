@@ -2,21 +2,9 @@
 currentMedicine = {}
 
 defaultMedicine = {
-	"Amoxicillin" : knowMedicines["Amoxicillin"],
-	"Ibuprofen" : {
-		"what": "What Ibuprofen is for",
-		"treats": "what Ibuprofen treats",
-		"how": "how Ibuprofen treats it",
-		"usage": "how to take Ibuprofen",
-		"notif": "off"
-	},
-	"Insulin" : {
-		"what": "What Insulin is for",
-		"treats": "what Insulin treats",
-		"how": "how Insulin treats it",
-		"usage": "how to take Insulin",
-		"notif": "on"
-	}
+	"Amoxicillin" : knownMedicines["Amoxicillin"],
+	"Ibuprofen" : knownMedicines["Ibuprofen"],
+	"Insulin" : knownMedicines["Insulin"]
 }
 
 function loadMedicine() {

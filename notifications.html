@@ -36,32 +36,36 @@
     </div>
     <footer align="center">
       <div id="notificationPageFooter">
-        <input type='button' id='newMedicineButton' name='New medicine' value="+">
-        <a href="home.html"><input type='button' class='' name='Home' value="Home"></a>
+        <a href="index.html"><input type='button' class='' name='Home' value="Home"></a>
       </div>
     </footer>
   </div>
-
   <footer align="center">
     <div class="feature"></div>
   </footer>
-
 </main>
 
-<script src="medicine.js"></script>
 <script src="knownMedicine.js"></script>
+<script src="medicine.js"></script>
 <script>
   // Reads medicine from local storage and shows it on the page.
   function showMedicine() {
     // Now list out all the medicine content
     container = document.getElementById("notificationsContainer")
-    container.innerHTML = ""
-    console.log(getMedicine());
-    for (medicine in getMedicine()) {
-      console.log(medicine)
-      container.innerHTML += "<br><div align='center'> <button class='medButton' name='" + medicine +"' id='"+medicine+"'> " + medicine + "</button></div><br>"
+    allMeds = getMedicine()
+    for (medicine in allMeds) {
+      console.log(allMeds[medicine])
+      if (allMeds[medicine]["notif"] == "on"){
+        container.innerHTML += "<div align='center'> <button class='medButton' onClick='displaySymptom()' name='" + medicine +"' id = '"+ medicine +"'> " + medicine + "   <img src ='icons/notif.png' height= 10px width = 10px></button> </div><br>"
+      }
+      else {
+        container.innerHTML += "<div align='center'> <button class='medButton' onClick='displaySymptom()' name='" + medicine +"' id = '"+ medicine +"'> " + medicine + "   <img src ='icons/offNotif.png' height= 13px width = 13px ></button> </div><br>"
+
+      }
+
     }
-    
+     // <img src ="icons/notif.png"> <img src ="icons/offNotif.png"
+    // <button class="button"> <img src ="icons/pill.png" height= "15" width="15"> Medications </button>
   }
 
   loadMedicine()
