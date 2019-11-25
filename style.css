@@ -249,9 +249,11 @@ main>footer .feature {
 }
 
 .symButton{
-  width: 100px;
+  width: 150px;
   height: 80px;
   border-radius: 12pt;
+    font-size: 13pt;
+
 }
 
 h2, label {
