@@ -39,9 +39,24 @@
 
     <div class="page" id="medicineNotification" hidden="true">
       <label class="switch">
-        <input type="checkbox">
+        <input onclick="setDosages()"type="checkbox">
         <span class="slider round"></span>
-      </label>>
+      </label>
+      <br> <br> <br>
+      <table>
+        <tr>
+          <td><label> Dose 1</label></td>
+          <td><input type="text" name="dose1" value="Ex. 6:00am"></td>
+        </tr>
+        <tr>
+          <td><label> Dose 2</label></td>
+          <td><input type="text" name="dose2" value="Ex. 6:00am"></td>
+        </tr>
+        <tr>
+            <td><label> Dose 3</label></td>
+            <td><input type="text" name="dose3" value="Ex. 6:00am"></td>
+        </tr>
+      </table>
     </div>
 
     <footer align="center">
