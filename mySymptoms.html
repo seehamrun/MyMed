@@ -44,16 +44,16 @@
       <h2>New Symptom</h2>
       <table>
         <tr>
-          <th><input type="button" name="drowsy" value="Drowsiness"></th>
-          <th><input type="button" name="fever" value="Fever"></th>
+          <th><input id="Drowsiness" type="button" name="drowsy" value="Drowsiness"></th>
+          <th><input id="Fever" type="button" name="fever" value="Fever"></th>
         </tr>
         <tr>
-          <th><input type="button" name="constipation" value="Constipation"></th>
-          <th><input type="button" name="nausea" value="Nausea"></th>
+          <th><input id="Constipation" type="button" name="constipation" value="Constipation"></th>
+          <th><input id="Nausea" type="button" name="nausea" value="Nausea"></th>
         </tr>
         <tr>
-          <th><input type="button" name="rash" value="Skin Rash"></th>
-          <th><input type="button" name="headache" value="Headaches"></th>
+          <th><input id="Skin Rash" type="button" name="rash" value="Skin Rash"></th>
+          <th><input id="Headaches" type="button" name="headache" value="Headaches"></th>
         </tr>
       </table>
 
@@ -70,7 +70,7 @@
 
       <div id="newSymptomFooter" hidden="true">
         <a href="index.html"><input type="button" name="Home" value="Home"></a>
-        <input type="button" name="Save" value="Save">
+        <input onclick="saveSymptoms()" type="button" name="Save" value="Save">
       </div>
     </footer>
 
@@ -101,7 +101,7 @@ defaultSymptoms = {
     }
   }
 
-
+//Show the add symptoms screen when add button is clicked
   function addSymptom(){
     document.getElementById("symptomsContainer").setAttribute("hidden", "true")
     document.getElementById("landingFooter").setAttribute("hidden","true")
@@ -110,6 +110,10 @@ defaultSymptoms = {
     $("#newSymptomFooter").removeAttr("hidden")
   }
 
+
+  function saveSymptomsForm(){
+
+  }
   //load and display medications that can have symptoms
   showSymptoms()
 

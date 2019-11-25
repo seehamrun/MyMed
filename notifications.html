@@ -1,4 +1,6 @@
 <link rel="stylesheet" href="style.css">
+<script src="lib/jquery-3.1.1.js"></script>
+
 <header>
   <h1>MyMed</h1>
 </header>
@@ -27,16 +29,28 @@
        <span class="ion-navicon"></span>
       </div>
     </header>
-    
+
     <div class="page">
       <div id="notificationsContainer">
         <div class="row" align="center">
         </div>
       </div>
     </div>
+
+    <div class="page" id="medicineNotification" hidden="true">
+      <label class="switch">
+        <input type="checkbox">
+        <span class="slider round"></span>
+      </label>>
+    </div>
+
     <footer align="center">
       <div id="notificationPageFooter">
         <a href="index.html"><input type='button' class='' name='Home' value="Home"></a>
+      </div>
+      <div id="medNotifFooter" hidden="true">
+        <input onclick="goBackAPage()"type="button" name="Back" value="Back">
+        <input onclick="saveNotifications()"type="Button" name="save" value="Save">
       </div>
     </footer>
   </div>
@@ -48,7 +62,7 @@
 <script src="knownMedicine.js"></script>
 <script src="medicine.js"></script>
 <script>
-  // Reads medicine from local storage and shows it on the page.
+  // Reads medicine from local storage and shows the notifications on the page
   function showMedicine() {
     // Now list out all the medicine content
     container = document.getElementById("notificationsContainer")
@@ -56,16 +70,34 @@
     for (medicine in allMeds) {
       console.log(allMeds[medicine])
       if (allMeds[medicine]["notif"] == "on"){
-        container.innerHTML += "<div align='center'> <button class='medButton' onClick='displaySymptom()' name='" + medicine +"' id = '"+ medicine +"'> " + medicine + "   <img src ='icons/notif.png' height= 10px width = 10px></button> </div><br>"
+        container.innerHTML += "<div align='center'> <button class='medButton' onClick='displayNotificationPage()' name='" + medicine +"' id = '"+ medicine +"'> " + medicine + "   <img src ='icons/notif.png' height= 10px width = 10px></button> </div><br>"
       }
       else {
-        container.innerHTML += "<div align='center'> <button class='medButton' onClick='displaySymptom()' name='" + medicine +"' id = '"+ medicine +"'> " + medicine + "   <img src ='icons/offNotif.png' height= 13px width = 13px ></button> </div><br>"
+        container.innerHTML += "<div align='center'> <button class='medButton' onClick='displayNotificationPage()' name='" + medicine +"' id = '"+ medicine +"'> " + medicine + "   <img src ='icons/offNotif.png' height= 13px width = 13px ></button> </div><br>"
 
       }
 
     }
      // <img src ="icons/notif.png"> <img src ="icons/offNotif.png"
     // <button class="button"> <img src ="icons/pill.png" height= "15" width="15"> Medications </button>
+  }
+
+//pull up the notification page for each medication
+  function displayNotificationPage(){
+    document.getElementById("notificationsContainer").setAttribute("hidden", "true")
+    $("#medicineNotification").removeAttr("hidden")
+
+    document.getElementById("notificationPageFooter").setAttribute("hidden","true")
+    $("#medNotifFooter").removeAttr("hidden")
+
+  }
+
+  function goBackAPage(){
+    document.getElementById("medicineNotification").setAttribute("hidden", "true")
+    $("#notificationsContainer").removeAttr("hidden")
+
+    document.getElementById("medNotifFooter").setAttribute("hidden","true")
+    $("#notificationPageFooter").removeAttr("hidden")
   }
 
   loadMedicine()
