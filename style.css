@@ -244,6 +244,12 @@ main>footer .feature {
   color: white;
 }
 
+.symButton{
+  width: 100px;
+  height: 80px;
+  border-radius: 12pt;
+}
+
 h2, label {
   color: white;
 }
