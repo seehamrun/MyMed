@@ -226,7 +226,7 @@ main>footer .feature {
   height: 25px;
   font-size: 12pt;  
   font-family:'Helvetica Neue';
-  border-radius: 12px;
+  border-radius: 10px;
 }
 
 .button{ 
@@ -235,7 +235,7 @@ main>footer .feature {
   height: 25px;
   font-size: 12pt;
   font-family:'Helvetica Neue';
-  border-radius: 12px;
+  border-radius: 10px;
 
 }
 
