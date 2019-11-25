@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="style.css">
-
+<script src="lib/jquery-3.1.1.js"></script>
 
 <header>
   <h1>MyMed</h1>
@@ -38,17 +38,42 @@
       <div class="container" id="symptomsContainer">
         MY Symptoms here
       </div>
+    </div>
 
+    <div class="page" id="newSymptomPage" hidden="true">
+      <h2>New Symptom</h2>
+      <table>
+        <tr>
+          <th><input type="button" name="drowsy" value="Drowsiness"></th>
+          <th><input type="button" name="fever" value="Fever"></th>
+        </tr>
+        <tr>
+          <th><input type="button" name="constipation" value="Constipation"></th>
+          <th><input type="button" name="nausea" value="Nausea"></th>
+        </tr>
+        <tr>
+          <th><input type="button" name="rash" value="Skin Rash"></th>
+          <th><input type="button" name="headache" value="Headaches"></th>
+        </tr>
+      </table>
+
+      <h3>Don't See Your Symptom? </h3>
+      <input type="text" name="otherSymp" value="Enter it Here">
     </div>
 
     <footer align="center">
       <div id="landingFooter">
         <a href="Symptoms.html"><input type="button" name="Back" value="Back"></a>
         <a href="index.html"><input type="button" name="Home" value="Home"></a>
-        <input type="button" name="Add" value="Add">
+        <input onclick="addSymptom()" type="button" name="Add" value="Add">
       </div>
 
+      <div id="newSymptomFooter" hidden="true">
+        <a href="index.html"><input type="button" name="Home" value="Home"></a>
+        <input type="button" name="Save" value="Save">
+      </div>
     </footer>
+
   </div>
 
   <footer id="SymptomsFooter">
@@ -73,14 +98,16 @@ defaultSymptoms = {
     for (symptom in defaultSymptoms) {
       console.log(symptom)
       container.innerHTML += "<div class='row' align='center'> <input type='button' class='medButton' name='" + symptom +"' value='" + symptom + "' id = '"+ symptom +"'> </div><br>"
-
     }
   }
 
 
-
   function addSymptom(){
+    document.getElementById("symptomsContainer").setAttribute("hidden", "true")
+    document.getElementById("landingFooter").setAttribute("hidden","true")
 
+    $("#newSymptomPage").removeAttr("hidden")
+    $("#newSymptomFooter").removeAttr("hidden")
   }
 
   //load and display medications that can have symptoms
