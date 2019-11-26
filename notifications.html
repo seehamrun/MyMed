@@ -37,7 +37,7 @@
       </div>
     </div>
 
-    <div class="page" id="medicineNotification" hidden="true">
+    <div class="page" id="medicineNotification" hidden="true" align="center">
       <label class="switch">
         <input onclick="toggleNotification()" type="checkbox" id="notificationsEnabled">
         <span class="slider round"></span>
@@ -95,10 +95,17 @@
   }
 
   function toggleNotification() {
-    console.log($("#notificationsEnabled").attr("checked"))
+    if ($("#notificationsEnabled").attr("checked")) {
+      // notification was on, and now they are turning it off
+      console.log("turning off notifications")
+      turnOffNotifications(3) 
+    } else {
+      // notifiation was off, and now they are turning it on
+      turnOnNotifications(3)
+    } 
   }
 
-//pull up the notification page for each medication
+  //pull up the notification page for each medication
   function displayNotificationPage(medicineName){
     console.log(medicineName)
     document.getElementById("notificationsContainer").setAttribute("hidden", "true")
@@ -113,11 +120,30 @@
     console.log(getMedicineInfo(medicineName))
     if(getMedicineInfo(medicineName)["notif"] == "on") {
       console.log("notifications on")
-      $("#notificationsEnabled").attr("checked", "true")
+      // TODO: if notifications are enabled, load the notification setting from medicineInfo
+      turnOnNotifications(3)
     } else {
-
+      console.log("notifications off")
+      // TODO: instead of 3 doses, use the dosage frequency to figure out how many
+      // doses to disable/show here
+      turnOffNotifications(3)
     }
 
+  }
+
+  // X is the number of dosages (currently unused...)
+  function turnOffNotifications(x) {
+    $("#notificationsEnabled").removeAttr("checked")
+    for(i=0; i<x; i++) {
+      $("#dose" + (i+1)).attr("disabled", "true")
+    }
+  }
+
+  function turnOnNotifications(x) {
+    $("#notificationsEnabled").attr("checked", "true")
+    for(i=0; i<x; i++) {
+      $("#dose" + (i+1)).removeAttr("disabled")
+    }
   }
 
   function goBackAPage(){
