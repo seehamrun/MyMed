@@ -24,7 +24,7 @@
       <div class="left">
       <span class="ion-chevron-left"></span>
       </div>
-      <div id = "title" align="center">MyMed</div>
+      <div id = "title" align="center">Notifications</div>
       <div class="right">
        <span class="ion-navicon"></span>
       </div>
@@ -38,24 +38,13 @@
     </div>
 
     <div class="page" id="medicineNotification" hidden="true" align="center">
+      <h2 id="medicineName"></h2>
       <label class="switch">
         <input onclick="toggleNotification()" type="checkbox" id="notificationsEnabled">
         <span class="slider round"></span>
       </label>
       <br> <br> <br>
       <table id="dosages">
-        <tr>
-          <td><label> Dose 1</label></td>
-          <td><input type="time" id="dose1" name="dose1"></td>
-        </tr>
-        <tr>
-          <td><label> Dose 2</label></td>
-          <td><input type="time" id="dose2" name="dose2"></td>
-        </tr>
-        <tr>
-            <td><label> Dose 3</label></td>
-            <td><input type="time" id="dose3" name="dose3"></td>
-        </tr>
       </table>
     </div>
 
@@ -64,8 +53,8 @@
         <a href="index.html"><input type='button' class='' name='Home' value="Home"></a>
       </div>
       <div id="medNotifFooter" hidden="true">
-        <input onclick="goBackAPage()"type="button" name="Back" value="Back">
-        <input onclick="saveNotifications()"type="Button" name="save" value="Save">
+        <input onclick="goBackAPage()" type="button" name="Back" value="Back">
+        <input onclick="saveNotifications()" type="Button" name="save" value="Save">
       </div>
     </footer>
   </div>
@@ -98,49 +87,81 @@
     if ($("#notificationsEnabled").attr("checked")) {
       // notification was on, and now they are turning it off
       console.log("turning off notifications")
-      turnOffNotifications(3) 
+      turnOffNotifications() 
     } else {
       // notifiation was off, and now they are turning it on
-      turnOnNotifications(3)
+      turnOnNotifications()
     } 
   }
 
   //pull up the notification page for each medication
   function displayNotificationPage(medicineName){
-    console.log(medicineName)
     document.getElementById("notificationsContainer").setAttribute("hidden", "true")
     $("#medicineNotification").removeAttr("hidden")
 
     document.getElementById("notificationPageFooter").setAttribute("hidden","true")
     $("#medNotifFooter").removeAttr("hidden")
 
-    console.log(getMedicineInfo(medicineName))
-    if(getMedicineInfo(medicineName)["notif"] == "on") {
-      console.log("notifications on")
-      // TODO: if notifications are enabled, load the notification setting from medicineInfo
-      turnOnNotifications(3)
-    } else {
-      console.log("notifications off")
-      // TODO: instead of 3 doses, use the dosage frequency to figure out how many
-      // doses to disable/show here
-      turnOffNotifications(3)
+    $("#medicineName").html(medicineName)
+    medInfo = getMedicineInfo(medicineName)
+    frequencyNum = medInfo["frequency"].split(":")[0]
+
+    html = ""
+    for(i=0; i<frequencyNum; i++) {
+      html += "<tr>"
+      html += "<td><label> Dose " + (i+1) + "</label></td>"
+      html += "<td><input type='time' id='dose" + (i+1) + "' name='dose" + (i+1) + "'></td>"
+      html += "</tr>"
     }
 
+    $("#dosages").html(html)
+    
+    if(medInfo["notif"] == "on") {
+      console.log("notifications on")
+      turnOnNotifications()
+    } else {
+      console.log("notifications off")
+      turnOffNotifications()
+    }
   }
 
-  // X is the number of dosages (currently unused...)
-  function turnOffNotifications(x) {
+  function turnOffNotifications() {
+    medName = document.getElementById("medicineName").innerHTML
+    x = getMedicineInfo(medName)["frequencyNum"]
+
     $("#notificationsEnabled").removeAttr("checked")
     for(i=0; i<x; i++) {
       $("#dose" + (i+1)).attr("disabled", "true")
     }
   }
 
-  function turnOnNotifications(x) {
+  function turnOnNotifications() {
+    medName = document.getElementById("medicineName").innerHTML
+    x = getMedicineInfo(medName)["frequencyNum"]
+
     $("#notificationsEnabled").attr("checked", "true")
     for(i=0; i<x; i++) {
       $("#dose" + (i+1)).removeAttr("disabled")
     }
+  }
+
+  function saveNotifications(){
+    medName = document.getElementById("medicineName").innerHTML
+    medInfo = getMedicineInfo(medName)
+    
+    notifTimes = []
+    if($("#notificationsEnabled").attr("checked")) {
+      medInfo["notif"] = "on"
+      frequencyNum = medInfo["frequency"].split(":")[0]
+      for(i=0; i<frequencyNum; i++) {
+        notifTimes.append($("#dose"+(i+1)).value)
+      }
+
+    } else {
+      medInfo["notif"] = "off"
+    }
+
+    medInfo["notifTimes"] = notifTimes
   }
 
   function goBackAPage(){
