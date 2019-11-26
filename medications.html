@@ -96,7 +96,7 @@
 
       </div>
       <div id="newMedicineFooter" hidden="true">
-        <button id='cancelNewMedicineButton' name='Cancel'>x</button> 
+        <button id='cancelNewMedicineButton'><img src="icons/x.png" height = "10px" width = "10px"></button> 
       </div>
       <div id="medicineInfoFooter" hidden="true">
         <button id='deleteMedicineButton' value="" name='exit' onclick="deleteMed()">Delete</button> 
@@ -174,8 +174,8 @@
     $("#confirmMedicinePage").removeAttr("hidden")
     $("#confirmMedicineFooter").removeAttr("hidden")
     html = "<div class = 'medInfo' align='center'><h2> Does this look OK? </h2>"
-    html += "<b>Name: </b>" + medicineInfo["name"] + "<br><br>"
-    html += "<b>Frequency: </b> " 
+    html += "<h5><b>Name: </b>" + medicineInfo["name"] + "</h5>"
+    html += "<h5><b>Frequency: </b> <h5>" 
 
     frequencyNum = medicineInfo["frequency"].split(":")[0]
     frequency = medicineInfo["frequency"].split(":")[1]
