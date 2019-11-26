@@ -35,17 +35,17 @@
         <div class="row" align="center">
         </div>
       </div>
-    </div>
 
-    <div class="page" id="medicineNotification" hidden="true" align="center">
-      <h2 id="medicineName"></h2>
-      <label class="switch">
-        <input onclick="toggleNotification()" type="checkbox" id="notificationsEnabled">
-        <span class="slider round"></span>
-      </label>
-      <br> <br> <br>
-      <table id="dosages">
-      </table>
+      <div id="medicineNotification" hidden="true" align="center">
+        <h2 id="medicineName"></h2>
+        <label class="switch">
+          <input onclick="toggleNotification()" type="checkbox" id="notificationsEnabled">
+          <span class="slider round"></span>
+        </label>
+        <br> <br> <br>
+        <table id="dosages">
+        </table>
+      </div>
     </div>
 
     <footer align="center">
@@ -68,8 +68,16 @@
 <script>
   // Reads medicine from local storage and shows the notifications on the page
   function showMedicine() {
+    // hide all the other pages
+    $("#medicineNotification").attr("hidden", "true")
+    $('#medNotifFooter').attr("hidden", "true")
+    // show the medicine page
+    $('#notificationPageFooter').removeAttr("hidden")
+    $('#notificationsContainer').removeAttr("hidden")
+
     // Now list out all the medicine content
     container = document.getElementById("notificationsContainer")
+    container.innerHTML = ""
     allMeds = getMedicine()
     for (medicine in allMeds) {
       console.log(allMeds[medicine])
@@ -170,6 +178,7 @@
     medInfo["notifTimes"] = notifTimes
     console.log(medInfo)
     addNewMedicine(medName, medInfo)
+    showMedicine()
   }
 
   function goBackAPage(){
@@ -178,6 +187,7 @@
 
     document.getElementById("medNotifFooter").setAttribute("hidden","true")
     $("#notificationPageFooter").removeAttr("hidden")
+    showMedicine()
   }
 
   loadMedicine()
