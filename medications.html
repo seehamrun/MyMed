@@ -23,7 +23,7 @@
       <div class="left">
       <span class="ion-chevron-left"></span>
       </div>
-      <div id = "title" align="center">MyMedications</div>
+      <div id = "title" align="center">My Medications</div>
       <div class="right">
        <span class="ion-navicon"></span>
       </div>
@@ -42,7 +42,7 @@
           <!--The other options get filled in when this page is rendered -->
         </select>
 
-        <br>
+        <br><br>
         <!-- 
           We dont really need amount per dose because the purpose of this 
           is to give the user a notification when its time to take the medicine.
@@ -64,7 +64,7 @@
           <option value="3:day">3 times a day</option>
           <option value="1:week">1 time a week</option>
         </select>
-
+        <br><br>
         <button id="medicineFormButton" onclick="medicineFormSubmitted()">Save Medicine</button>
     </div>
 
@@ -87,8 +87,8 @@
 
     <footer align="center">
       <div id="medicinePageFooter">
-        <input type='button' id='newMedicineButton' name='New medicine' value="+">
-        <a href="index.html"><input type="button" name="Home" value="Home"></a>
+        <a href="index.html"><button class="homeButton"> Home </button></a>
+        <input type='button' class= "addButton" id='newMedicineButton' name='New medicine' value="+">
       </div>
       <div id="newMedicineFooter" hidden="true">
         <button id='cancelNewMedicineButton' name='Cancel'>x</button> 
@@ -168,9 +168,9 @@
     // show the medicine confirmation page
     $("#confirmMedicinePage").removeAttr("hidden")
     $("#confirmMedicineFooter").removeAttr("hidden")
-    html = "<div class = 'medInfo'><h2> Does this look OK? </h2>"
-    html += "<b>Name:</b>" + medicineInfo["name"] + "<br><br>"
-    html += "<b>Frequency:</b> " 
+    html = "<div class = 'medInfo' align='center'><h2> Does this look OK? </h2>"
+    html += "<b>Name: </b>" + medicineInfo["name"] + "<br><br>"
+    html += "<b>Frequency: </b> " 
 
     frequencyNum = medicineInfo["frequency"].split(":")[0]
     frequency = medicineInfo["frequency"].split(":")[1]

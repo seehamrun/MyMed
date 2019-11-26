@@ -228,6 +228,9 @@ main>footer .feature {
   font-family:'Helvetica Neue';
   border-radius: 10px;
 }
+.medButton:hover{
+  background-color: #98BFC1;
+}
 
 .button{
   background-color: white;
@@ -236,7 +239,10 @@ main>footer .feature {
   font-size: 12pt;
   font-family:'Helvetica Neue';
   border-radius: 10px;
+}
 
+.button:hover {
+  background-color: #98BFC1;
 }
 
 #title{
@@ -253,6 +259,25 @@ main>footer .feature {
   height: 80px;
   border-radius: 12pt;
   font-size: 13pt;
+}
+.symButton:hover {
+  background-color: #98BFC1;
+}
+
+.homeButton{
+  border-radius: 4pt;
+}
+
+.homeButton:hover {
+  background-color: #98BFC1;
+}
+
+.addButton{
+  border-radius: 4pt;
+}
+
+.addButton:hover {
+  background-color: #98BFC1;
 }
 
 h2, label {
