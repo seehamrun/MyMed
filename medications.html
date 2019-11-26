@@ -42,7 +42,7 @@
           <!--The other options get filled in when this page is rendered -->
         </select>
 
-        <br>
+        <br><br>
         <!-- 
           We dont really need amount per dose because the purpose of this 
           is to give the user a notification when its time to take the medicine.
@@ -64,7 +64,7 @@
           <option value="3:day">3 times a day</option>
           <option value="1:week">1 time a week</option>
         </select>
-
+        <br><br>
         <button id="medicineFormButton" onclick="medicineFormSubmitted()">Save Medicine</button>
     </div>
 
@@ -168,9 +168,9 @@
     // show the medicine confirmation page
     $("#confirmMedicinePage").removeAttr("hidden")
     $("#confirmMedicineFooter").removeAttr("hidden")
-    html = "<div class = 'medInfo'><h2> Does this look OK? </h2>"
-    html += "<b>Name:</b>" + medicineInfo["name"] + "<br><br>"
-    html += "<b>Frequency:</b> " 
+    html = "<div class = 'medInfo' align='center'><h2> Does this look OK? </h2>"
+    html += "<b>Name: </b>" + medicineInfo["name"] + "<br><br>"
+    html += "<b>Frequency: </b> " 
 
     frequencyNum = medicineInfo["frequency"].split(":")[0]
     frequency = medicineInfo["frequency"].split(":")[1]
