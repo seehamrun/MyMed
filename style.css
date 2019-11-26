@@ -260,23 +260,15 @@ main>footer .feature {
   border-radius: 12pt;
   font-size: 13pt;
 }
-.symButton:hover {
-  background-color: #98BFC1;
-}
 
-.homeButton{
+.homeButton, .addButton{
   border-radius: 4pt;
 }
 
-.homeButton:hover {
-  background-color: #98BFC1;
+.quickSym{
+  border-radius: 40%;
 }
-
-.addButton{
-  border-radius: 4pt;
-}
-
-.addButton:hover {
+.addButton:hover, .homeButton:hover, .symButton:hover, .quickSym:hover {
   background-color: #98BFC1;
 }
 
