@@ -8,7 +8,7 @@ knownMedicines = {
 	  "sideEffects": [
 	  
 	  ],
-    "notif" : "on"
+    "notif" : "off"
   }, 
 
   // https://www.drugs.com/abilify.html
@@ -133,7 +133,7 @@ knownMedicines = {
       "bloating",
       "dizziness",
     ],
-    "notif": "on"
+    "notif": "off"
   },
 
   // https://www.drugs.com/insulin.html

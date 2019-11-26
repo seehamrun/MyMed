@@ -2,9 +2,9 @@
 currentMedicine = {}
 
 defaultMedicine = {
-	"Amoxicillin" : knownMedicines["Amoxicillin"],
-	"Ibuprofen" : knownMedicines["Ibuprofen"],
-	"Insulin" : knownMedicines["Insulin"]
+	"Amoxicillin" : Object.assign({}, knownMedicines["Amoxicillin"], {"notif": "on"}),
+	"Ibuprofen" : Object.assign({}, knownMedicines["Ibuprofen"], {"notif": "on"}),
+	"Insulin" : Object.assign({}, knownMedicines["Insulin"], {"notif": "off"}),
 }
 
 function loadMedicine() {
