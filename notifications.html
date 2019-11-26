@@ -127,7 +127,7 @@
 
   function turnOffNotifications() {
     medName = document.getElementById("medicineName").innerHTML
-    x = getMedicineInfo(medName)["frequencyNum"]
+    x = getMedicineInfo(medName)["frequency"].split(":")[0]
 
     $("#notificationsEnabled").removeAttr("checked")
     for(i=0; i<x; i++) {
@@ -137,7 +137,7 @@
 
   function turnOnNotifications() {
     medName = document.getElementById("medicineName").innerHTML
-    x = getMedicineInfo(medName)["frequencyNum"]
+    x = getMedicineInfo(medName)["frequency"].split(":")[0]
 
     $("#notificationsEnabled").attr("checked", "true")
     for(i=0; i<x; i++) {
@@ -154,7 +154,7 @@
       medInfo["notif"] = "on"
       frequencyNum = medInfo["frequency"].split(":")[0]
       for(i=0; i<frequencyNum; i++) {
-        notifTimes.append($("#dose"+(i+1)).value)
+        notifTimes.push($("#dose"+(i+1)).value)
       }
 
     } else {
@@ -162,6 +162,7 @@
     }
 
     medInfo["notifTimes"] = notifTimes
+    console.log(medInfo)
   }
 
   function goBackAPage(){
