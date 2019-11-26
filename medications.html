@@ -43,15 +43,26 @@
         </select>
 
         <br>
-        <label>Number of Dosages: </label>
-        <input type="number" name="dosageNum" min="1" id="dosageNum"> <br>
-
-        <label>Frequency: every</label> <input type="number" name="frequencyNum" min="1" id="frequencyNum"> 
+        <!-- 
+          We dont really need amount per dose because the purpose of this 
+          is to give the user a notification when its time to take the medicine.
+          When users take their mediciation, they either already know how much to take
+          or they have the bottle right next to them and check it to see how much (and
+          they check the bottle to make sure it is the right medicine already.)
+        -->
+        <label>Dose Frequency: </label> 
         <select name="frequency" id="frequency">
           <option value="Empty"></option>
-          <option value="day">day</option>
-          <option value="hour">hour</option>
-          <option value="week">week</option>
+          <option value="1:hour">every hour</option>
+          <option value="2:hour">every 2 hours</option>
+          <option value="3:hour">every 3 hours</option>
+          <option value="4:hour">every 4 hours</option>
+          <option value="5:hour">every 5 hours</option>
+          <option value="6:hour">every 6 hours</option>
+          <option value="1:day">1 time a day</option>
+          <option value="2:day">2 times a day</option>
+          <option value="3:day">3 times a day</option>
+          <option value="1:week">1 time a week</option>
         </select>
 
         <button id="medicineFormButton" onclick="medicineFormSubmitted()">Save Medicine</button>
@@ -88,7 +99,7 @@
       </div>
       <div id="confirmMedicineFooter" hidden="true">
         <button id='cancelConfirmNewMedicineButton' name='cancel' onclick="goBackToFilledMedicineForm()">x</button>  
-        <button id='confirmNewMedicineButton' name='confirm' onclick="confirmAdd()">✔️</button>
+        <button id='confirmNewMedicineButton' name='confirm' onclick="confirmAdd()">✔</button>
       </div>
     </footer>
   </div>
@@ -134,8 +145,6 @@
   function medicineFormSubmitted(){
     medicine = {
       "name": document.getElementById("MedicineName").value,
-      "dosageNum": document.getElementById("dosageNum").value,
-      "frequencyNum": document.getElementById("frequencyNum").value,
       "frequency": document.getElementById("frequency").value,      
     }
     // TODO: verify the info populated is correct
@@ -161,11 +170,23 @@
     $("#confirmMedicineFooter").removeAttr("hidden")
     html = "<div class = 'medInfo'><h2> Does this look OK? </h2>"
     html += "<b>Name:</b>" + medicineInfo["name"] + "<br><br>"
-    html += "<b>Numer of Doses:</b> " + medicineInfo["dosageNum"] + "<br><br>"
-    html += "<b>Frequency:</b> every " + medicineInfo["frequencyNum"] + " " + medicineInfo["frequency"]
-    if(medicineInfo["frequencyNum"] > 1) {
-      html += "s"
-    }
+    html += "<b>Frequency:</b> " 
+
+    frequencyNum = medicineInfo["frequency"].split(":")[0]
+    frequency = medicineInfo["frequency"].split(":")[1]
+
+    if (frequency == "hour") {
+      html += "every " + frequencyNum + " hour"
+      if (frequencyNum > 1) {
+        html += "s"
+      }
+    } else if (frequency == "day" || frequency == "week") {
+      html += frequencyNum + " time"
+      if (frequencyNum > 1) {
+        html += "s"
+      }
+      html += " a " + frequency
+    } 
     html += "</div>"
 
     document.getElementById("confirmMedicinePage").innerHTML = html
@@ -174,8 +195,6 @@
   function confirmAdd(){
     addNewMedicine(medicineInfo["name"],  medicineInfo)
     // clear the form info
-    document.getElementById("dosageNum").value = ""
-    document.getElementById("frequencyNum").value = ""
     document.getElementById("frequency").value = ""
     showMedicine()
   }
@@ -270,7 +289,6 @@
     document.getElementById("newMedicinePage").setAttribute("hidden", "true")
     document.getElementById("newMedicineFooter").setAttribute("hidden", "true")
     $("#newMedicineCancelPage").removeAttr("hidden")
-    // showMedicine()
   });
 
   $(document).on('click', '#exitMedicineInfoView', function () {

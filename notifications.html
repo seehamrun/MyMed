@@ -114,9 +114,6 @@
     document.getElementById("notificationPageFooter").setAttribute("hidden","true")
     $("#medNotifFooter").removeAttr("hidden")
 
-    dosageFrequencyNum = getMedicineInfo(medicineName)["frequencyNum"]
-    dosageFrequency = getMedicineInfo(medicineName)["frequency"]
-
     console.log(getMedicineInfo(medicineName))
     if(getMedicineInfo(medicineName)["notif"] == "on") {
       console.log("notifications on")
