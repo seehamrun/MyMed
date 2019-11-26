@@ -36,8 +36,9 @@
 
     <div class="page" id="newMedicinePage" hidden="true">
       <h2>New Medicaton</h2>
-        <label>Name: </label>
-        <select name="MedicineName" id="MedicineName">
+      <br>
+        <label>Name: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </label>
+        <select class="dropDown" name="MedicineName" id="MedicineName">
           <option value="Empty"></option>
           <!--The other options get filled in when this page is rendered -->
         </select>
@@ -50,8 +51,8 @@
           or they have the bottle right next to them and check it to see how much (and
           they check the bottle to make sure it is the right medicine already.)
         -->
-        <label>Dose Frequency: </label> 
-        <select name="frequency" id="frequency">
+        <label>Dose Frequency:&nbsp;&nbsp;</label> 
+        <select class="dropDown" name="frequency" id="frequency">
           <option value="Empty"></option>
           <option value="1:hour">every hour</option>
           <option value="2:hour">every 2 hours</option>
@@ -64,8 +65,10 @@
           <option value="3:day">3 times a day</option>
           <option value="1:week">1 time a week</option>
         </select>
-        <br><br>
-        <button id="medicineFormButton" onclick="medicineFormSubmitted()">Save Medicine</button>
+        <br><br><br><br>
+        <div align="center">
+           <button id="medicineFormButton" onclick="medicineFormSubmitted()">Save Medicine</button>
+        </div>
     </div>
 
     <div class="page" id="medicineInfoPage" hidden="true">
@@ -84,11 +87,13 @@
       <button id='cancelAddButton' onclick="showMedicine()">✔️</button>
     </div>
 
-
     <footer align="center">
       <div id="medicinePageFooter">
-        <a href="index.html"><button class="homeButton"> Home </button></a>
-        <input type='button' class= "addButton" id='newMedicineButton' name='New medicine' value="+">
+        
+        <a href="index.html"><button class="homeButton" ><img src = "icons/home.png" height = "13px" width= "13px"></button></a>
+        
+        <button class= "addButton" id='newMedicineButton'><img src = "icons/add.png" height = "13px" width= "13px"></button>
+
       </div>
       <div id="newMedicineFooter" hidden="true">
         <button id='cancelNewMedicineButton' name='Cancel'>x</button> 
