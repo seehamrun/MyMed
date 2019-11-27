@@ -1,5 +1,6 @@
 <link rel="stylesheet" href="style.css">
 <script src="lib/jquery-3.1.1.js"></script>
+<script src="lib/moment.js"></script>
 
 <header>
   <h1>MyMed</h1>
@@ -113,8 +114,9 @@
 
     $("#medicineName").html(medicineName)
     medInfo = getMedicineInfo(medicineName)
-    frequencyNum = medInfo["frequency"].split(":")[0]
-    frequency = medInfo["frequency"].split(":")[1]
+    frequencyStr = medInfo["frequency"]
+    frequencyNum = frequencyStr.split(":")[0]
+    frequency = frequencyStr.split(":")[1]
 
     html = ""
     times = medInfo["notifTimes"]
@@ -136,7 +138,8 @@
     $("#medicineFrequency").html(html)
 
     html = ""
-    for(i=0; i<frequencyNum; i++) {
+    dosages = getNumberOfDosages(frequencyStr)
+    for(i=0; i<dosages; i++) {
       html += "<tr>"
       html += "<td><label> Dose " + (i+1) + "</label></td>"
       html += "<td><input type='time' id='dose" + (i+1) + "' name='dose" + (i+1) + "'" 
@@ -156,6 +159,40 @@
       console.log("notifications off")
       turnOffNotifications()
     }
+
+    $("#dose1").on('input', function(){
+      medName = document.getElementById("medicineName").innerHTML
+      console.log("dose1 updated: " + document.getElementById("dose1").value)
+      time = moment(document.getElementById("dose1").value, "HH:mm")
+      console.log(time)
+      medInfo = getMedicineInfo(medName)
+      frequencyStr = medInfo["frequency"]
+      frequencyNum = frequencyStr.split(":")[0]
+      frequency = frequencyStr.split(":")[1]
+      interval = 0
+      interval_unit = ""
+
+      if(frequency == "hour") {
+        // format is every x hours
+        interval = frequencyNum
+        interval_unit = "hours"
+      } else if (frequency == "day") {
+        // format is x times a day
+        interval = 24/frequencyNum
+        interval_unit = "hours"
+      } else {
+        // format is x per week.... 
+        // this one is complicated. Im going to fix it later
+        return
+      }
+
+      dosages = getNumberOfDosages(frequencyStr)
+      console.log(dosages)
+      for(i = 1; i<dosages; i++) {
+        document.getElementById("dose"+(i+1)).value = time.add(interval, interval_unit).format("HH:mm")
+        console.log("dose" + (i+1) + " updated " + time.format("HH:mm") )
+      }
+    })
   }
 
   function getNumberOfDosages(frequency) {
@@ -185,8 +222,10 @@
     x = getNumberOfDosages(getMedicineInfo(medName)["frequency"])
 
     $("#notificationsEnabled").attr("checked", "true")
-    for(i=0; i<x; i++) {
-      $("#dose" + (i+1)).removeAttr("disabled")
+    // the user only edits the first dose, the rest are auto-determined based on frequency
+    $("#dose1").removeAttr("disabled")
+    for(i=1; i<x; i++) {
+      $("#dose" + (i+1)).attr("disabled", "true")
     }
   }
 
