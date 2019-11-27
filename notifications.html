@@ -38,6 +38,7 @@
 
       <div id="medicineNotification" hidden="true" align="center">
         <h2 id="medicineName"></h2>
+        <h4 id="medicineFrequency"></h4>
         <label class="switch">
           <input onclick="toggleNotification()" type="checkbox" id="notificationsEnabled">
           <span class="slider round"></span>
@@ -113,10 +114,28 @@
     $("#medicineName").html(medicineName)
     medInfo = getMedicineInfo(medicineName)
     frequencyNum = medInfo["frequency"].split(":")[0]
+    frequency = medInfo["frequency"].split(":")[1]
 
     html = ""
     times = medInfo["notifTimes"]
 
+    html += "dosage frequency: " 
+    if (frequency == "hour") {
+      html += "every " + frequencyNum + " hour"
+      if (frequencyNum > 1) {
+        html += "s"
+      }
+    } else if (frequency == "day" || frequency == "week") {
+      html += frequencyNum + " time"
+      if (frequencyNum > 1) {
+        html += "s"
+      }
+      html += " a " + frequency
+    } 
+
+    $("#medicineFrequency").html(html)
+
+    html = ""
     for(i=0; i<frequencyNum; i++) {
       html += "<tr>"
       html += "<td><label> Dose " + (i+1) + "</label></td>"
