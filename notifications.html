@@ -158,9 +158,21 @@
     }
   }
 
+  function getNumberOfDosages(frequency) {
+    x = frequency.split(":")[0]
+    y = frequency.split(":")[1]
+    if(y=="hour"){
+      // format = every x hours
+      return 24/x 
+    } else if(y == "day" || y == "week") {
+      // format = x a day or x a week
+      return x
+    } 
+  }
+
   function turnOffNotifications() {
     medName = document.getElementById("medicineName").innerHTML
-    x = getMedicineInfo(medName)["frequency"].split(":")[0]
+    x = getNumberOfDosages(getMedicineInfo(medName)["frequency"])
 
     $("#notificationsEnabled").removeAttr("checked")
     for(i=0; i<x; i++) {
@@ -170,7 +182,7 @@
 
   function turnOnNotifications() {
     medName = document.getElementById("medicineName").innerHTML
-    x = getMedicineInfo(medName)["frequency"].split(":")[0]
+    x = getNumberOfDosages(getMedicineInfo(medName)["frequency"])
 
     $("#notificationsEnabled").attr("checked", "true")
     for(i=0; i<x; i++) {
@@ -185,7 +197,7 @@
     notifTimes = []
     if($("#notificationsEnabled").attr("checked")) {
       medInfo["notif"] = "on"
-      frequencyNum = medInfo["frequency"].split(":")[0]
+      frequencyNum = getNumberOfDosages(getMedicineInfo(medName)["frequency"])
       for(i=0; i<frequencyNum; i++) {
         notifTimes.push(document.getElementById("dose" + (i+1)).value)
       }

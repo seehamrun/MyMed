@@ -14,7 +14,7 @@ defaultMedicine = {
 	}),
 	"Insulin" : Object.assign({}, knownMedicines["Insulin"], {
 		"notif": "off",
-		"frequency": "3:day",
+		"frequency": "4:hour",
 	}),
 }
 
