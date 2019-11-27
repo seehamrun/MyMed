@@ -127,27 +127,30 @@
       if (frequencyNum > 1) {
         html += "s"
       }
-    } else if (frequency == "day" || frequency == "week") {
+    } else if (frequency == "day") {
       html += frequencyNum + " time"
       if (frequencyNum > 1) {
         html += "s"
       }
-      html += " a " + frequency
+      html += " a day"
     } 
 
     $("#medicineFrequency").html(html)
 
     html = ""
     dosages = getNumberOfDosages(frequencyStr)
-    for(i=0; i<dosages; i++) {
-      html += "<tr>"
-      html += "<td><label> Dose " + (i+1) + "</label></td>"
-      html += "<td><input type='time' id='dose" + (i+1) + "' name='dose" + (i+1) + "'" 
-      if(times) {
-        html += "value = '" + times[i] + "'"
-      } 
-      html += "></td>"
-      html += "</tr>"
+
+    if(frequency == "day" || frequency == "hour") {
+      for(i=0; i<dosages; i++) {
+        html += "<tr>"
+        html += "<td><label>Dose " + (i+1) + "</label></td>"
+        html += "<td><input type='time' id='dose" + (i+1) + "' name='dose" + (i+1) + "'" 
+        if(times) {
+          html += "value = '" + times[i] + "'"
+        } 
+        html += "></td>"
+        html += "</tr>"
+      }
     }
 
     $("#dosages").html(html)
@@ -180,11 +183,7 @@
         // format is x times a day
         interval = 24/frequencyNum
         interval_unit = "hours"
-      } else {
-        // format is x per week.... 
-        // this one is complicated. Im going to fix it later
-        return
-      }
+      } 
 
       dosages = getNumberOfDosages(frequencyStr)
       console.log(dosages)
@@ -201,8 +200,8 @@
     if(y=="hour"){
       // format = every x hours
       return 24/x 
-    } else if(y == "day" || y == "week") {
-      // format = x a day or x a week
+    } else if(y == "day") {
+      // format = x a day
       return x
     } 
   }

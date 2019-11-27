@@ -63,7 +63,6 @@
           <option value="1:day">1 time a day</option>
           <option value="2:day">2 times a day</option>
           <option value="3:day">3 times a day</option>
-          <option value="1:week">1 time a week</option>
         </select>
         <br><br><br><br>
         <div align="center">
@@ -185,7 +184,7 @@
       if (frequencyNum > 1) {
         html += "s"
       }
-    } else if (frequency == "day" || frequency == "week") {
+    } else if (frequency == "day") {
       html += frequencyNum + " time"
       if (frequencyNum > 1) {
         html += "s"
