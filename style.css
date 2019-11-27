@@ -216,8 +216,7 @@ main>footer .feature {
 .options{
   height: 100%;
   width:100%;
-    color: white;
-
+  color: white;
 }
 
 .medButton{
@@ -294,7 +293,7 @@ main>footer .feature {
   font-weight: bold;  
 }
 
-#deleteMedicineButton{
+#deleteMedicineButton, #exitMedicineInfoView{
   border-radius: 4pt;
   height: 25px;
   width: 85px
@@ -313,7 +312,8 @@ main>footer .feature {
 
 .addButton:hover, .homeButton:hover, .symButton:hover, 
 .quickSym:hover, #medicineFormButton:hover, #goBackToMedicineFormButton:hover,
-#cancelNewMedicineButton:hover, #deleteMedicineButton:hover, #deleteMedButton:hover{
+#cancelNewMedicineButton:hover, #deleteMedicineButton:hover, #deleteMedButton:hover, 
+#exitMedicineInfoView:hover{
   background-color: #98BFC1;
 }
 
