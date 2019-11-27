@@ -270,6 +270,14 @@ main>footer .feature {
   font-weight: bold;
 }
 
+.mainButton{
+  width: 200px;
+  height: 30px;
+  border-radius: 12pt;
+  font-size: 13pt;
+  font-weight: bold;
+}
+
 .homeButton, .addButton, #cancelNewMedicineButton{
   border-radius: 4pt;
   height: 25px;
