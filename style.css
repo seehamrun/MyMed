@@ -235,8 +235,11 @@ main>footer .feature {
 
 .deleteMedButton{
   height: 25px;
-  width: 25px;
+  width: 65px;
+  border-radius: 10px;
+
 }
+
 .button{
   background-color: white;
   width: 150px;
@@ -266,12 +269,33 @@ main>footer .feature {
   font-size: 13pt;
 }
 
-.homeButton, .addButton, #medicineFormButton, #cancelNewMedicineButton{
+.homeButton, .addButton, #cancelNewMedicineButton{
   border-radius: 4pt;
   height: 25px;
   width: 45px
   text-align : "center";
   font-weight: bold;
+}
+
+#medicineFormButton{
+  border-radius: 4pt;
+  height: 45px;
+  width: 85px
+  text-align : "center";
+  font-weight: bold;  
+}
+
+#deleteMedicineButton{
+  border-radius: 4pt;
+  height: 25px;
+  width: 85px
+  text-align : "center";
+  font-weight: bold;  
+}
+
+.homeButton, .addButton{
+  width: 40px;
+  height: 30px;
 }
 
 .quickSym{
@@ -280,7 +304,7 @@ main>footer .feature {
 
 .addButton:hover, .homeButton:hover, .symButton:hover, 
 .quickSym:hover, #medicineFormButton:hover, #goBackToMedicineFormButton:hover,
-#cancelNewMedicineButton:hover{
+#cancelNewMedicineButton:hover, #deleteMedicineButton:hover, #deleteMedButton:hover{
   background-color: #98BFC1;
 }
 
@@ -297,10 +321,6 @@ background-color: #98BFC1;
   width: 100px;
 }
 
-img{
-  height: 10px;
-  width: 10px;
-}
 
 h2, h3, label{
   color: white;

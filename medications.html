@@ -90,16 +90,16 @@
     <footer align="center">
       <div id="medicinePageFooter">
         
-        <a href="index.html"><button class="homeButton" ><img src = "icons/home.png" height = "13px" width= "13px"></button></a>
-        
-        <button class= "addButton" id='newMedicineButton'><img src = "icons/add.png" height = "13px" width= "13px"></button>
+        <a href="index.html"><button class="homeButton" ><img src = "icons/home.png" height = "25px" width= "25px"></button></a>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <button class= "addButton" id='newMedicineButton'><img src = "icons/add.png" height = "25px" width= "25px"></button>
 
       </div>
       <div id="newMedicineFooter" hidden="true">
         <button id='cancelNewMedicineButton'><img src="icons/x.png" height = "10px" width = "10px"></button> 
       </div>
       <div id="medicineInfoFooter" hidden="true">
-        <button id='deleteMedicineButton' value="" name='exit' onclick="deleteMed()">Delete</button> 
+        <button id='deleteMedicineButton' value="" name='exit' onclick="deleteMed()"><img src = "icons/delete.png" height = "20px" width = "20px"></button> 
         <button id='exitMedicineInfoView' name='exit'>✔</button> 
       </div>
       <div id="confirmMedicineFooter" hidden="true">
@@ -257,7 +257,7 @@
     html = "<div class='medInfo' align='center'>"
     html += "<h3> Are you sure you want to delete " + medicineToDelete + " from your medicine list?<h3>"
     html += "This can not be undone - you will have to read the medince manually."
-    html += "<br><br><button class= 'deleteMedButton' id='" + medicineToDelete+ "' onclick='deleteMedConfirmed(id)'><img src = 'icons/delete.png' width= '40px' height = '40px'></button>" 
+    html += "<br><br><button class= 'deleteMedButton' id='" + medicineToDelete+ "' onclick='deleteMedConfirmed(id)'><img src = 'icons/delete.png' width= '15px' height = '15px'></button>" 
     html += "<br><br>"
     html += "<button id='" + medicineToDelete +"' onclick='showMedicineInfo(id)'>Cancel</button>" 
     html += "</div>"
