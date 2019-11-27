@@ -229,7 +229,7 @@ main>footer .feature {
   border-radius: 10px;
   font-weight: bold;
 }
-.medButton:hover{
+.medButton:hover, .mainButton:hover{
   background-color: #98BFC1;
 }
 
@@ -263,10 +263,19 @@ main>footer .feature {
 }
 
 .symButton{
-  width: 100px;
+  width: 200px;
   height: 80px;
   border-radius: 12pt;
   font-size: 13pt;
+  font-weight: bold;
+}
+
+.mainButton{
+  width: 200px;
+  height: 30px;
+  border-radius: 12pt;
+  font-size: 13pt;
+  font-weight: bold;
 }
 
 .homeButton, .addButton, #cancelNewMedicineButton{
