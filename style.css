@@ -331,7 +331,7 @@ background-color: #98BFC1;
 }
 
 
-h2, h3, h4, label{
+h2, h3, h4, h5, h6, label{
   color: white;
 }
 .medInfo{
@@ -340,6 +340,10 @@ h2, h3, h4, label{
 
 h5{
   font-size: 12pt;
+}
+
+h6{
+  font-size: 8pt;
 }
 
 table{
@@ -361,8 +365,8 @@ td{
 .switch {
   position: relative;
   display: inline-block;
-  width: 60px;
-  height: 34px;
+  width: 50px;
+  height: 25px;
 }
 
 /* Hide default HTML checkbox */
@@ -388,8 +392,8 @@ td{
 .slider:before {
   position: absolute;
   content: "";
-  height: 26px;
-  width: 26px;
+  height: 18px;
+  width: 18px;
   left: 4px;
   bottom: 4px;
   background-color: white;
