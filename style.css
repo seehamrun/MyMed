@@ -229,7 +229,7 @@ main>footer .feature {
   border-radius: 10px;
   font-weight: bold;
 }
-.medButton:hover{
+.medButton:hover, .mainButton:hover{
   background-color: #98BFC1;
 }
 
