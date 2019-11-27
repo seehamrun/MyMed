@@ -255,9 +255,9 @@
 
     $("#confirmDeleteMedicinePage").removeAttr("hidden")
     html = "<div class='medInfo' align='center'>"
-    html += "<h2> Are you sure you want to delete " + medicineToDelete + " from your medicine list?<h2>"
-    html += "This can not be undone - you will have to readd the medince manually."
-    html += "<button id='" + medicineToDelete+ "' onclick='deleteMedConfirmed(id)'>Delete</button>" 
+    html += "<h3> Are you sure you want to delete " + medicineToDelete + " from your medicine list?<h3>"
+    html += "This can not be undone - you will have to read the medince manually."
+    html += "<br><br><button class= 'deleteMedButton' id='" + medicineToDelete+ "' onclick='deleteMedConfirmed(id)'><img src = 'icons/delete.png' width= '40px' height = '40px'></button>" 
     html += "<br><br>"
     html += "<button id='" + medicineToDelete +"' onclick='showMedicineInfo(id)'>Cancel</button>" 
     html += "</div>"

@@ -233,6 +233,10 @@ main>footer .feature {
   background-color: #98BFC1;
 }
 
+.deleteMedButton{
+  height: 25px;
+  width: 25px;
+}
 .button{
   background-color: white;
   width: 150px;

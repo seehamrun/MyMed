@@ -122,7 +122,7 @@ knownMedicines = {
     "what": "a nonsteroidal anti-inflammatory drug (NSAID",
     "treats": "used to reduce fever and treat pain or inflammation caused by many conditions such as headache, toothache, back pain, arthritis, menstrual cramps, or minor injury.",
     "how": "works by reducing hormones that cause inflammation and pain in the body.",
-    "usage": "",
+    "usage": "It is best to take ibuprofen with food or milk to prevent stomach upset.",
     "sideEffects": [
       "changes of vision", 
       "hearburn",
