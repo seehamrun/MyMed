@@ -32,23 +32,33 @@
     </header>
 
     <div class="page">
-      <div class="container" id="SymptomsContainer">
+      <div class="container" id="medicinePage">
         <!--This is populated in the showMedicine() function-->
       </div>
 
       <div class="container" id="medicineSymptomsPage">
-        <!--This is populated in the showMedicine() function-->
+        <!--This is populated in the showMedicineInfo() function-->
+      </div>
+
+      <div class="container" id="symptomInfoPage">
+        <!--This is populated in the showSymptomInfo() function-->
       </div>
 
     </div>
 
     <footer align="center" id="appfooter">
-      <div id="SymptomsPageFooter">
+      <div id="medicinePageFooter">
         <a href="Symptoms.html"><input type="button" name="Back" value="Back"></a>
         <a href="index.html"><input type="button" name="Home" value="Home"></a>
       </div>
       <div id="medicineInfoFooter" hidden="true">
        <button id='exitMedicineInfoView' name='exit' onclick="showMedicine()">✔️</button>
+      </div>
+
+      <div id="symptomInfoFooter" hidden="true">
+        <button id="backSymptomInfoButton" name="back" onclick="showMedicineInfo(value)">
+          back
+        </button>
       </div>
     </footer>
 
@@ -65,42 +75,62 @@
 <script>
   // Reads medicine from local storage and shows it on the page.
   function showMedicine() {
-
     document.getElementById("medicineSymptomsPage").setAttribute("hidden", "true")
     document.getElementById("medicineInfoFooter").setAttribute("hidden", "true")
-    $("#SymptomsContainer").removeAttr("hidden")
-    $("#SymptomsPageFooter").removeAttr("hidden")
+    document.getElementById("symptomInfoPage").setAttribute("hidden", "true")
+    document.getElementById("symptomInfoFooter").setAttribute("hidden", "true")
 
-    container = document.getElementById("SymptomsContainer")
-    container.innerHTML = ""
+    // show the medicine page
+    $("#medicinePage").removeAttr("hidden")
+    $("#medicinePageFooter").removeAttr("hidden")
+
+    container = document.getElementById("medicinePage")
+    html = "<div align='center'>"
     for (medicine in getMedicine()) {
-      console.log(medicine)
-      container.innerHTML += "<div class='row' align='center'> <input type='button' class='medButton' onClick='showSymptomInfo(" + medicine + ")' name='" + medicine +"' value='" + medicine + "' id = '"+ medicine +"'> </div><br>"
-
+      html += " <input type='button' class='medButton' onClick='showMedicineInfo(id)' " 
+      html += "name='" + medicine +"' value='" + medicine + "' id = '"+ medicine +"'> <br><br>"
     }
+    html += "</div>"
+    container.innerHTML = html
   }
 
-  function showSymptomInfo(medicine){
+  function showMedicineInfo(medicine){
     // hide the medicine page and the new medicine form and footer
-    document.getElementById("SymptomsContainer").setAttribute("hidden", "true")
-    document.getElementById("SymptomsPageFooter").setAttribute("hidden", "true")
+    document.getElementById("medicinePage").setAttribute("hidden", "true")
+    document.getElementById("medicinePageFooter").setAttribute("hidden", "true")
+    document.getElementById("symptomInfoPage").setAttribute("hidden", "true")
+    document.getElementById("symptomInfoFooter").setAttribute("hidden", "true")
 
-    // show the medicine info form
+    // show the medicine info page
     $("#medicineSymptomsPage").removeAttr("hidden")
     $("#medicineInfoFooter").removeAttr("hidden")
-    console.log(medicine.name)
-    medicineInfo = getMedicineInfo(medicine.name)
+    medicineInfo = getMedicineInfo(medicine)
 
-    html = "<div class = 'medInfo'><h2>" + medicine.name + "</h2> <br>"
-    html += "<b> Symptoms </b> <br>" 
+    html = "<div class = 'medInfo' align='center'><h2>Common" + medicine 
+    html +=" symptoms</h2>"
+    
     for(symptom in medicineInfo["sideEffects"]) {
-      html += medicineInfo["sideEffects"][symptom] + "<br>"
+      symp = medicineInfo["sideEffects"][symptom]
+      html += "<button class='medButton' onclick='showSymptomInfo(id)' id='" + symp + "' >" 
+      html +=  symp
+      html += "</button><br><br>"
     } 
     html+="</div>"
-    console.log(html)
 
+    $("#backSymptomInfoButton").attr('value', medicine)
     $("#medicineSymptomsPage").html(html)
-    console.log(medicineInfo)
+  }
+
+  function showSymptomInfo(symptomId){
+    document.getElementById("medicinePage").setAttribute("hidden", "true")
+    document.getElementById("medicinePageFooter").setAttribute("hidden", "true")
+    document.getElementById("medicineSymptomsPage").setAttribute("hidden", "true")
+    document.getElementById("medicineInfoFooter").setAttribute("hidden", "true")
+
+    // show the medicine info page
+    $("#symptomInfoPage").removeAttr("hidden") 
+    $("#symptomInfoFooter").removeAttr("hidden") 
+    console.log(symptomId)
   }
 
   //load and display medications that can have symptoms

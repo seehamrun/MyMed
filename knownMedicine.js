@@ -6,7 +6,9 @@ knownMedicines = {
 	  "usage": "Take this medication by mouth with or without food as " +
 	           "directed by your doctor, usually every 8 hours.",
 	  "sideEffects": [
-	  
+      "diarrhea",
+      "upset stomach",
+      "headache"
 	  ],
     "notif" : "off"
   }, 
@@ -58,7 +60,7 @@ knownMedicines = {
       "headache",
       "nausea",
       "sleeplessness",
-      "stomach pain"
+      "upset stomach"
     ],
     "notif": "off"
   },
