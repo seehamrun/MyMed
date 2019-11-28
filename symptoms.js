@@ -30,7 +30,16 @@ knownSymptoms = {
   	"Dry Mouth" : {"what" : "An unusually dry mouth, often caused by medication.", 
  								"causes" : "Clarinex"},
   	"Insomnia" : {"what" : "Persistent problems falling and staying asleep.", 
- 								"causes" : "Akineton, Bethanechol, Bystolic"}
+ 								"causes" : "Akineton, Bethanechol, Bystolic"},
+    "Upset Stomach": {"What" : "", "causes": ""},
+    "Dry Cough": {"What" : "", "causes": ""}
+
+}
+
+relatedSymptoms = {
+  "Heart Burn" : ["Upset Stomach", "Dry Cough", "Chest Pain"],
+  "Upset Stomach" : ["Nausea", "Drowsiness", "Constipation"],
+
 }
 
 currentSymptoms = {}
@@ -58,6 +67,10 @@ function addSymptom(symptom){
 function deleteSymptom(symptom){
 	delete currentSymptoms[symptom]
 	save("symptoms", currentSymptoms)
+}
+
+function getSymptomInfo(symptom) {
+  return knownSymptoms[symptom]
 }
 
 // Saves the passed data to a localStorage key as JSON.

@@ -72,6 +72,7 @@
 
 <script src="knownMedicine.js"></script>
 <script src="medicine.js"></script>
+<script src="symptoms.js"></script>
 <script>
   // Reads medicine from local storage and shows it on the page.
   function showMedicine() {
@@ -106,7 +107,7 @@
     $("#medicineInfoFooter").removeAttr("hidden")
     medicineInfo = getMedicineInfo(medicine)
 
-    html = "<div class = 'medInfo' align='center'><h2>Common" + medicine 
+    html = "<div class = 'medInfo' align='center'><h2>Common " + medicine 
     html +=" symptoms</h2>"
     
     for(symptom in medicineInfo["sideEffects"]) {
@@ -127,10 +128,17 @@
     document.getElementById("medicineSymptomsPage").setAttribute("hidden", "true")
     document.getElementById("medicineInfoFooter").setAttribute("hidden", "true")
 
-    // show the medicine info page
+    // show the symptom info page
     $("#symptomInfoPage").removeAttr("hidden") 
     $("#symptomInfoFooter").removeAttr("hidden") 
-    console.log(symptomId)
+
+    sympInfo = getSymptomInfo(symptomId)
+    console.log(sympInfo)
+
+    html = "<h2>" + symptomId + "</h2>"
+    $("#symptomInfoPage").html(html) 
+    html += "<h3> What is it? </h3>"
+
   }
 
   //load and display medications that can have symptoms
