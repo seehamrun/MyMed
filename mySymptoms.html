@@ -71,20 +71,29 @@
           <img src="icons/home.png" width= "20px" height="20px">
         </button></a>
         
-        <button class= "homeButton" onclick="addSymptomForm()"> 
+        <button class= "addButton" onclick="addSymptomForm()"> 
           <img src="icons/add.png" width= "20px" height="20px">
         </button>
       </div>
 
       <div id="newSymptomFooter" hidden="true">
-        <a href="index.html"><button type="button" name="Home"> 
-          Home 
+        <button class= "homeButton" onclick="showSymptoms()"> 
+          <img src="icons/back.png" width= "20px" height="20px">
+        </button>
+        <a href="index.html"><button class= "homeButton">
+          <img src="icons/home.png" width= "20px" height="20px">
         </button></a>
       </div>
 
       <div id="symptomInfoFooter" hidden="true">
+        <button class= "homeButton" onclick="showSymptoms()"> 
+          <img src="icons/back.png" width= "20px" height="20px">
+        </button>
+        <a href="index.html"><button class= "homeButton">
+          <img src="icons/home.png" width= "20px" height="20px">
+        </button></a>
         <button onclick="deleteSymptomClicked(value)" id="deleteSymptomButton" value="">Delete</button>
-        <button onclick="showSymptoms()">Home</button>
+
       </div>
     </footer>
 
