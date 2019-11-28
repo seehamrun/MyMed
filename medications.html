@@ -34,7 +34,7 @@
       </div>
     </div>
 
-    <div class="page" id="newMedicinePage" hidden="true">
+    <div align= "center" class="page" id="newMedicinePage" hidden="true">
       <h2>New Medicaton</h2>
       <br>
         <label>Name: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </label>
@@ -81,7 +81,7 @@
 
     <div class="page" id="newMedicineCancelPage" hidden="true" align="center">
       <h1 align="center"> Are you sure you want to exit? </h1>
-      <div class="medInfo"> <h3 align="center">All progress will be lost. This new medication will not be saved to your list.</h3></div>
+      <div class="medInfo"> <h3 align="center">All progress will be lost. This new medication will not be saved to your list.<br><br></h3></div>
       
       <button id='goBackToMedicineFormButton' onclick="goBackToFilledMedicineForm()" align="center"><img src="icons/cancel.png" height="40px" width="40px"></button>  
       &nbsp;&nbsp;&nbsp;&nbsp;
@@ -238,7 +238,7 @@
     document.getElementById("deleteMedicineButton").setAttribute("value", medicine)
 
     medicineInfo = getMedicineInfo(medicine)
-    html = "<div class = 'medInfo'><h2>" + medicine + "</h2> <br>"
+    html = "<div class = 'medInfo'><h2>" + medicine + "</h2>"
     html += "<b> What is it: </b>" + medicineInfo["what"] + "<br><br>"
     html += "<b> What it treats: </b>" + medicineInfo["treats"] + "<br><br>"
     html += "<b> How it works: </b>" + medicineInfo["how"] + "<br><br>"
@@ -260,7 +260,7 @@
     html += "This can not be undone - you will have to read the medince manually."
     html += "<br><br><button class= 'deleteMedButton' id='" + medicineToDelete+ "' onclick='deleteMedConfirmed(id)'><img src = 'icons/delete.png' width= '15px' height = '15px'></button>" 
     html += "<br><br>"
-    html += "<button id='" + medicineToDelete +"' onclick='showMedicineInfo(id)'>Cancel</button>" 
+    html += "<button class= 'deleteMedButton' id='" + medicineToDelete +"' onclick='showMedicineInfo(id)'><img src = 'icons/back.png' width='15px' height = '15px'></button>" 
     html += "</div>"
     $("#confirmDeleteMedicinePage").html(html)
 
