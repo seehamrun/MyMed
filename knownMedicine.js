@@ -6,9 +6,9 @@ knownMedicines = {
 	  "usage": "Take this medication by mouth with or without food as " +
 	           "directed by your doctor, usually every 8 hours.",
 	  "sideEffects": [
-      "diarrhea",
-      "upset stomach",
-      "headache"
+      "Diarrhea",
+      "Upset Stomach",
+      "Headache"
 	  ],
     "notif" : "off"
   }, 
@@ -21,10 +21,10 @@ knownMedicines = {
     "usage": "how to take Abilify",
     "sideEffects": [
     	"Difficulty with speaking", 
-    	"drooling", 
-    	"loss of balance control",
-		  "muscle trembling, jerking, or stiffness",
-		  "restlessness"
+    	"Drooling", 
+    	"Loss of balance control",
+		  "Muscle trembling, jerking, or stiffness",
+		  "Restlessness"
 	  ],
     "notif": "off"
   },
@@ -36,10 +36,10 @@ knownMedicines = {
   	"how": "improves muscle control and reduces stiffness, this medicine allows more normal movements of the body.", 
   	"usage": "Take this medicine every day exactly as ordered by your doctor in order to improve your condition as much as possible.",
   	"sideEffects" : [
-  	  "drowsiness", 
-  	  "choreic movements", 
-  	  "reduced REM sleep", 
-  	  "anticholinergic syndrome"
+  	  "Drowsiness", 
+  	  "Choreic movements", 
+  	  "Reduced REM sleep", 
+  	  "Anticholinergic Syndrome"
   	],
     "notif": "off"
   },
@@ -52,15 +52,15 @@ knownMedicines = {
     "usage": "Take bethanechol exactly as directed by your doctor. If you do not understand these directions, ask your pharmacist, nurse, or doctor to explain them to you.",
     "sideEffects" : [
       "Belching",
-      "blurred vision",
-      "diarrhea",
-      "dizziness",
-      "fainting", 
-      "frequent urination",
-      "headache",
-      "nausea",
-      "sleeplessness",
-      "upset stomach"
+      "Blurred Vision",
+      "Diarrhea",
+      "Dizziness",
+      "Fainting", 
+      "Frequent Urination",
+      "Headache",
+      "Nausea",
+      "Sleeplessness",
+      "Upset Stomach"
     ],
     "notif": "off"
   },
@@ -75,12 +75,12 @@ knownMedicines = {
              "Follow the directions on your prescription label." +
              "Take Bystolic at the same time every day, with or without food.",
     "sideEffects" : [
-      "shortness of breath",
-      "swelling of your ankles",
-      "headache",
-      "nausea",
-      "diarrhea",
-      "insomnia"
+      "Shortness of Breath",
+      "Swelling of the ankles",
+      "Headache",
+      "Nausea",
+      "Diarrhea",
+      "Insomnia"
     ],
     "notif": "off"
   }, 
@@ -95,11 +95,11 @@ knownMedicines = {
              "Follow the directions on your prescription label." +
              "Take Clarinex with or without food.",
     "sideEffects" : [
-      "dry mouth",
-      "sore throat",
-      "muscle pain", 
-      "drowsiness",
-      "menstrual pain"
+      "Dry Mouth",
+      "Sore Throat",
+      "Muscle Pain", 
+      "Drowsiness",
+      "Menstrual Pain"
     ],
     "notif": "off"
   }, 
@@ -111,10 +111,9 @@ knownMedicines = {
     "how": "helps reduce inflammation in the body", 
     "usage": "Apply a thin layer of medicine to the affected skin and rub it in gently. Do not apply this medicine over a large area of skin unless your doctor has told you to.",
     "sideEffects": [
-      "worsening of your condition", 
-      "redness, warmth, swelling, oozing, or severe irritation of any treated skin",
-      "high blood sugar", 
-
+      "Worsening of your condition", 
+      "Redness, warmth, swelling, oozing, or severe irritation of any treated skin",
+      "High Blood Sugar", 
     ],
     "notif": "off"
   },
@@ -126,14 +125,14 @@ knownMedicines = {
     "how": "works by reducing hormones that cause inflammation and pain in the body.",
     "usage": "It is best to take ibuprofen with food or milk to prevent stomach upset.",
     "sideEffects": [
-      "changes of vision", 
-      "hearburn",
-      "shortness of breath",
-      "liver problems",
-      "kidney stones",
-      "upset stomach",
-      "bloating",
-      "dizziness",
+      "Changes of Vision", 
+      "Hearburn",
+      "Shortness of Breath",
+      "Liver Problems",
+      "Kidney Stones",
+      "Upset Stomach",
+      "Bloating",
+      "Dizziness",
     ],
     "notif": "off"
   },
@@ -145,9 +144,9 @@ knownMedicines = {
     "how": "works by lowering levels of glucose (sugar) in the blood",
     "usage": "Regular insulin is injected under the skin. Regular insulin must not be given with a pump. Do not inject this medicine into a vein or a muscle.",
     "sideEffects": [
-      "low blood sugar",
-      "swelling",
-      "weight gain"
+      "Low Blood Sugar",
+      "Swelling",
+      "Weight Gain"
     ],
     "notif": "off"
   },
@@ -158,7 +157,19 @@ knownMedicines = {
     "treats": "Type 2 diabetes",
     "how": "used together with diet and exercise to improve blood sugar control in adults with type 2 diabetes", 
     "usage": "",
-    "sideEffects": [],
+    "sideEffects": [
+      "Abdominal discomfort",
+      "Cough or Hoarseness",
+      "Decreased Appetite",
+      "Diarrhea",
+      "Fast or shallow breathing",
+      "Fever",
+      "Chills",
+      "Lower back or side pain",
+      "Muscle pain or cramping",
+      "Painful urination",
+      "sleepiness",
+    ],
     "notif": "off"
   }
 }
