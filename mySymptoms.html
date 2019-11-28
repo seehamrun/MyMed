@@ -31,52 +31,60 @@
     </header>
 
     <div class="page">
-      <br>
-      <br>
-      <br>
-
       <div class="container" id="symptomsContainer">
-        MY Symptoms here
       </div>
-    </div>
 
-    <div class="page" id="newSymptomPage" hidden="true">
-      <h2>New Symptom</h2>
-      <table>
-        <tr align="center">
+      <div class="container" id="symptomInfo" hidden="true">
+      </div>
 
-          <td ><button class= "quickSym" onclick="submitSymptomForm('Drowsiness')"> <img src = "icons/drowsiness.png" height = "30px" width = "30px"></button>Drowsiness</td>
-          
-          <td><button class= "quickSym" onclick="submitSymptomForm('Fever')"><img src = "icons/fever.png" height = "30px" width = "30px"></button>Fever</td>
-        </tr>
-        <tr align="center">
-          <td><input type="button" class= "quickSym" name="constipation" value="Constipation" onclick="submitSymptomForm('Constipation')"></td>
-          <td><input type="button" class= "quickSym" name="nausea" value="Nausea" onclick="submitSymptomForm('Nausea')"></td>
-        </tr>
-        <tr align="center">
-          <td><input type="button" class= "quickSym" name="rash" value="Skin Rash" onclick="submitSymptomForm('Skin Rash')"></td>
-          <td><input type="button" class= "quickSym" name="headache" value="Headache" onclick="submitSymptomForm('Headache')"></td>
+      <div class="container" id="newSymptomPage" hidden="true">
+        <h2>New Symptom</h2>
+        <table>
+          <tr align="center">
+            <td ><button class= "quickSym" onclick="submitSymptomForm('Drowsiness')"> <img src = "icons/drowsiness.png" height = "30px" width = "30px"></button>Drowsiness</td>
+            
+            <td><button class= "quickSym" onclick="submitSymptomForm('Fever')"><img src = "icons/fever.png" height = "30px" width = "30px"></button>Fever</td>
+          </tr>
+          <tr align="center">
+            <td><input type="button" class= "quickSym" name="constipation" value="Constipation" onclick="submitSymptomForm('Constipation')"></td>
+            <td><input type="button" class= "quickSym" name="nausea" value="Nausea" onclick="submitSymptomForm('Nausea')"></td>
+          </tr>
+          <tr align="center">
+            <td><input type="button" class= "quickSym" name="rash" value="Skin Rash" onclick="submitSymptomForm('Skin Rash')"></td>
+            <td><input type="button" class= "quickSym" name="headache" value="Headache" onclick="submitSymptomForm('Headache')"></td>
+          </tr>
+        </table>
 
-        </tr>
-      </table>
-
-      <h3>Don't See Your Symptom? </h3>
-      <input type="text" id="otherSymp" name="otherSymp" value="Enter it Here">
-      <input type="button" name="Save" value="Save" onclick="submitManualForm()">
+        <h3>Don't See Your Symptom? </h3>
+        <input type="text" id="otherSymp" name="otherSymp" value="Enter it Here">
+        <input type="button" name="Save" value="Save" onclick="submitManualForm()">
+      </div>
     </div>
 
     <footer align="center">
       <div id="landingFooter">
-        <a href="Symptoms.html"><button class= "homeButton"> <img src="icons/back.png" width= "20px" height="20px"></button></a>
+        <a href="Symptoms.html"><button class= "homeButton"> 
+          <img src="icons/back.png" width= "20px" height="20px">
+        </button></a>
 
-        <a href="index.html"><button class= "homeButton"> <img src="icons/home.png" width= "20px" height="20px"></button></a>
+        <a href="index.html"><button class= "homeButton">
+          <img src="icons/home.png" width= "20px" height="20px">
+        </button></a>
         
-        <button class= "homeButton" onclick="addSymptomForm()"> <img src="icons/add.png" width= "20px" height="20px">
-
+        <button class= "homeButton" onclick="addSymptomForm()"> 
+          <img src="icons/add.png" width= "20px" height="20px">
+        </button>
       </div>
 
       <div id="newSymptomFooter" hidden="true">
-        <a href="index.html"><input type="button" name="Home" value="Home"></a>
+        <a href="index.html"><button type="button" name="Home"> 
+          Home 
+        </button></a>
+      </div>
+
+      <div id="symptomInfoFooter" hidden="true">
+        <button onclick="deleteSymptomClicked(value)" id="deleteSymptomButton" value="">Delete</button>
+        <button onclick="showSymptoms()">Home</button>
       </div>
     </footer>
 
@@ -100,13 +108,35 @@
 
     document.getElementById("newSymptomPage").setAttribute("hidden", "true")
     document.getElementById("newSymptomFooter").setAttribute("hidden","true")
+    document.getElementById("symptomInfo").setAttribute("hidden","true")    
+    document.getElementById("symptomInfoFooter").setAttribute("hidden","true")    
 
     container = document.getElementById("symptomsContainer")
-    container.innerHTML = ""
+    html = ""
     for (symptom in getSymptoms()) {
-      console.log(symptom)
-      container.innerHTML += "<div class='row' align='center'> <input type='button' class='medButton' name='" + symptom +"' value='" + symptom + "' id = '"+ symptom +"'> </div><br>"
+      html += "<div class='row' align='center'> "
+      html += "<input type='button' class='medButton' " 
+      html += "name='" + symptom +"' value='" + symptom + "' id = '"+ symptom + "' " 
+      html += "onclick='showSymptomInfo(id)'> </div><br>"
     }
+    container.innerHTML = html
+  }
+
+  function showSymptomInfo(id) {
+    console.log(id)
+    $("#symptomInfo").removeAttr("hidden")
+    $("#symptomInfoFooter").removeAttr("hidden")
+    $("#deleteSymptomButton").attr("value", id)
+    document.getElementById("newSymptomPage").setAttribute("hidden", "true")
+    document.getElementById("newSymptomFooter").setAttribute("hidden","true")
+    document.getElementById("symptomsContainer").setAttribute("hidden","true")    
+    document.getElementById("landingFooter").setAttribute("hidden","true")
+  }
+
+  function deleteSymptomClicked(id) {
+    console.log("deleted symptom: " + id)
+    deleteSymptom(id)
+    showSymptoms()
   }
 
   function addSymptomForm(){
