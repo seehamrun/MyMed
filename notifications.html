@@ -51,11 +51,11 @@
 
     <footer align="center">
       <div id="notificationPageFooter">
-        <a href="index.html"><input type='button' class='' name='Home' value="Home"></a>
+        <a href="index.html"><button class= "homeButton"><img src="icons/home.png" height="20px" width="20px"></button></a>
       </div>
       <div id="medNotifFooter" hidden="true">
-        <input onclick="goBackAPage()" type="button" name="Back" value="Back">
-        <input onclick="saveNotifications()" type="Button" name="save" value="Save">
+        <button onclick="goBackAPage()" class = notifButtons><img src="icons/back.png" height="20px" width="20px"></button>
+        <button onclick="saveNotifications()" class = notifButtons><img src="icons/save.png" height="20px" width="20px"></button>
       </div>
     </footer>
   </div>
@@ -83,10 +83,10 @@
     for (medicine in allMeds) {
       console.log(allMeds[medicine])
       if (allMeds[medicine]["notif"] == "on"){
-        container.innerHTML += "<div align='center'> <button class='medButton' onClick='displayNotificationPage(id)' name='" + medicine +"' id = '"+ medicine +"'> " + medicine + "   <img src ='icons/notif.png' height= 10px width = 10px></button> </div><br>"
+        container.innerHTML += "<div align='center'> <br><button class='medButton' onClick='displayNotificationPage(id)' name='" + medicine +"' id = '"+ medicine +"'> " + medicine + "   <img src ='icons/notif.png' height= 15px width = 15px></button> </div><br><br>"
       }
       else {
-        container.innerHTML += "<div align='center'> <button class='medButton' onClick='displayNotificationPage(id)' name='" + medicine +"' id = '"+ medicine +"'> " + medicine + "   <img src ='icons/offNotif.png' height= 13px width = 13px ></button> </div><br>"
+        container.innerHTML += "<div align='center'> <button class='medButton' onClick='displayNotificationPage(id)' name='" + medicine +"' id = '"+ medicine +"'> " + medicine + "   <img src ='icons/offNotif.png' height= 14px width = 15px ></button> </div><br><br>"
 
       }
     }
@@ -120,9 +120,9 @@
     html = ""
     times = medInfo["notifTimes"]
 
-    html += "dosage frequency: " 
+    html += "Dosage Frequency: " 
     if (frequency == "hour") {
-      html += "every " + frequencyNum + " hour"
+      html += "Every " + frequencyNum + " hour"
       if (frequencyNum > 1) {
         html += "s"
       }
