@@ -25,8 +25,8 @@ knownSymptoms = {
  								"causes" : "Akineton, Bethanechol"},
   	"Skin Rash" : {"what" : "Temporary outbreak of red, bumpy, scaly, or itchy patches of skin, possibly with blisters or welts.", 
  								"causes" : "Cloderm, Insulin"},
-  	"Diarrhea" : {"what" : "Loose, watery bowel movements that may occur frequently and with a sense of urgency.", 
- 								"causes" : "Bethanechol, Bystolic, Metformin"},
+  	"Diarrhea" : {"what" : "Diarrhea is associated with loose, watery bowel movements that may occur frequently and with a sense of urgency.", 
+ 								"causes" : "Amoxicillin, Bethanechol, Bystolic, Metformin"},
   	"Dry Mouth" : {"what" : "An unusually dry mouth, often caused by medication.", 
  								"causes" : "Clarinex"},
   	"Insomnia" : {"what" : "Persistent problems falling and staying asleep.", 
@@ -39,6 +39,7 @@ knownSymptoms = {
 relatedSymptoms = {
   "Heart Burn" : ["Upset Stomach", "Dry Cough", "Chest Pain"],
   "Upset Stomach" : ["Nausea", "Drowsiness", "Constipation"],
+  "Diarrhea" : ["Nausea", "Upset Stomach"],
 
 }
 
@@ -71,6 +72,10 @@ function deleteSymptom(symptom){
 
 function getSymptomInfo(symptom) {
   return knownSymptoms[symptom]
+}
+
+function getRelatedSymptoms(symptom) {
+  return relatedSymptoms[symptom]
 }
 
 // Saves the passed data to a localStorage key as JSON.
