@@ -143,6 +143,17 @@
     document.getElementById("newSymptomFooter").setAttribute("hidden","true")
     document.getElementById("symptomsContainer").setAttribute("hidden","true")    
     document.getElementById("landingFooter").setAttribute("hidden","true")
+
+    sympInfo = getSymptomInfo(id)
+    console.log(sympInfo)
+    html = "<div align='center' class='medInfo'>"
+    html += "<h2>" + id + "</h2>"
+    html += "<h3> What is it? </h3>"
+    html += sympInfo["what"]
+    html += "<h3> This can happen if you're taking the following medications </h3>"
+    html += sympInfo["causes"]
+    html += "</div>"
+    $("#symptomInfo").html(html)
   }
 
   function deleteSymptomClicked(id) {
