@@ -167,7 +167,7 @@ knownMedicines = {
       "Chills",
       "Lower back or side pain",
       "Muscle pain or cramping",
-      "Painful urination",
+      "Painful Urination",
       "sleepiness",
     ],
     "notif": "off"
