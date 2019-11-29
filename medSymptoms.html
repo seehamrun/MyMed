@@ -52,7 +52,7 @@
         <a href="index.html"><input type="button" name="Home" value="Home"></a>
       </div>
       <div id="medicineInfoFooter" hidden="true">
-       <button id='exitMedicineInfoView' name='exit' onclick="showMedicine()">✔️</button>
+       <button id='exitMedicineInfoView' name='exit' onclick="showMedicine()">back</button>
       </div>
 
       <div id="symptomInfoFooter" hidden="true">
@@ -134,11 +134,20 @@
 
     sympInfo = getSymptomInfo(symptomId)
     console.log(sympInfo)
-
-    html = "<h2>" + symptomId + "</h2>"
-    $("#symptomInfoPage").html(html) 
+    html = "<div align='center' class='medInfo'>"
+    html += "<h2>" + symptomId + "</h2>"
     html += "<h3> What is it? </h3>"
+    html += sympInfo["what"]
+    html += "<h3> Related Symptoms </h3>"
+    otherSymptoms = getRelatedSymptoms(symptomId)
+    for(i in otherSymptoms) {
+      symptom = otherSymptoms[i]
+      html += "<button id='" + symptom + "' onclick='showSymptomInfo(id)'>" + symptom
+      html += "</button> <br><br>" 
+    }
+    html += "</div>"
 
+    $("#symptomInfoPage").html(html) 
   }
 
   //load and display medications that can have symptoms
