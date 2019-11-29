@@ -285,7 +285,7 @@ main>footer .feature {
   font-weight: bold;
 }
 
-.homeButton, .addButton, .notifButtons,  #cancelNewMedicineButton, #cancelConfirmNewMedicineButton, #backSymptomInfoButton{
+.homeButton, .addButton, .notifButtons,  #cancelNewMedicineButton, #cancelConfirmNewMedicineButton, #backSymptomInfoButton, .clickMedSymptom{
   border-radius: 4pt;
   height: 25px;
   width: 45px
@@ -326,11 +326,11 @@ main>footer .feature {
   border-radius: 40%;
 }
 
-.addButton:hover, .homeButton:hover, .symButton:hover, 
+.addButton:hover, .homeButton:hover, .symButton:hover, .clickMedSymptom:hover, 
 .quickSym:hover, #medicineFormButton:hover, #goBackToMedicineFormButton:hover,
 #cancelNewMedicineButton:hover, #deleteMedicineButton:hover, #deleteMedButton:hover, 
 #exitMedicineInfoView:hover, #cancelConfirmNewMedicineButton:hover, #confirmNewMedicineButton:hover, 
-#cancelAddButton:hover, .notifButtons:hover, .medSymButton:hover{
+#cancelAddButton:hover, .notifButtons:hover, .medSymButton:hover, #backSymptomInfoButton:hover{
   background-color: #98BFC1;
 }
 
