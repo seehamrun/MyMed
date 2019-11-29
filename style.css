@@ -285,7 +285,7 @@ main>footer .feature {
   font-weight: bold;
 }
 
-.homeButton, .addButton, .notifButtons,  #cancelNewMedicineButton, #cancelConfirmNewMedicineButton{
+.homeButton, .addButton, .notifButtons,  #cancelNewMedicineButton, #cancelConfirmNewMedicineButton, #backSymptomInfoButton{
   border-radius: 4pt;
   height: 25px;
   width: 45px
@@ -383,6 +383,7 @@ th{
 
 td{
   vertical-align: middle;
+  padding-bottom: 10px;
 }
 
 

@@ -40,27 +40,30 @@
       <div class="container" id="newSymptomPage" hidden="true">
         <h2>New Symptom</h2>
         <table>
+
           <tr align="center">
-            <td ><button class= "quickSym" onclick="submitSymptomForm('Drowsiness')"> <img src = "icons/drowsiness.png" height = "30px" width = "30px"></button><p>Drowsiness</p></td>
+            <td ><button class= "quickSym" onclick="submitSymptomForm('Drowsiness')"> <img src = "icons/drowsiness.png" height = "25px" width = "25px"></button><br>Drowsiness</td>
             
-            <td><button class= "quickSym" onclick="submitSymptomForm('Fever')"><img src = "icons/fever.png" height = "30px" width = "30px"></button><p>Fever</p></td>
+            <td><button class= "quickSym" onclick="submitSymptomForm('Fever')"><img src = "icons/fever.png" height = "25px" width = "25px"></button><br>Fever</td>
           </tr>
 
           <tr align="center">
-            <td><input type="button" class= "quickSym" name="constipation" value="Constipation" onclick="submitSymptomForm('Constipation')"></td>
+            <td><button class= "quickSym" onclick="submitSymptomForm('Constipation')"><img src="icons/toilet.png" width="25px" height="25px"></button><br>Constipation</td>
 
-            <td><input type="button" class= "quickSym" name="nausea" value="Nausea" onclick="submitSymptomForm('Nausea')"></td>
+            <td><button class= "quickSym" onclick="submitSymptomForm('Nausea')"><img src="icons/nausea.png" height="25px" width="25px"></button><br>Nausea</td>
           </tr>
           <tr align="center">
-            <td><input type="button" class= "quickSym" name="rash" value="Skin Rash" onclick="submitSymptomForm('Skin Rash')"></td>
+            <td><button class= "quickSym" onclick="submitSymptomForm('Skin Rash')"><img src="icons/rash.png" height="25px" width="25px"></button><br>Skin Rash</td>
             
-            <td><input type="button" class= "quickSym" name="headache" value="Headache" onclick="submitSymptomForm('Headache')"></td>
+            <td><button class= "quickSym" onclick="submitSymptomForm('Headache')"><img src="icons/headache.png" height="25px" width="25px"></button><br>Headache</td>
           </tr>
         </table>
 
-        <h3>Don't See Your Symptom? </h3>
-        <input type="text" id="otherSymp" name="otherSymp" value="Enter it Here">
-        <input type="button" name="Save" value="Save" onclick="submitManualForm()">
+        <div class="medInfo" align="center">
+          Don't See Your Symptom? <br>
+          <input type="text" id="otherSymp" name="otherSymp" value="Enter it Here">
+          <input type="button" name="Save" value="Save" onclick="submitManualForm()">
+        </div>
       </div>
     </div>
 
