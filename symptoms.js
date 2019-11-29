@@ -31,8 +31,14 @@ knownSymptoms = {
  								"causes" : "Clarinex"},
   	"Insomnia" : {"what" : "Persistent problems falling and staying asleep.", 
  								"causes" : "Akineton, Bethanechol, Bystolic"},
-    "Upset Stomach": {"What" : "", "causes": ""},
-    "Dry Cough": {"What" : "", "causes": ""}
+    "Upset Stomach": {
+      "What" : "Upper abdominal discomfort, described as burning sensation, bloating or gassiness, nausea, or feeling full too quickly after starting to eat.", 
+      "causes": "Amoxicillin, Ibuprofen"
+    },
+    "Dry Cough": {
+      "What" : "A reflex action that clears your airway of irritants and mucus, but doesn’t produce phlegm or mucus.", 
+      "causes": ""
+    }
 
 }
 
@@ -40,6 +46,11 @@ relatedSymptoms = {
   "Heart Burn" : ["Upset Stomach", "Dry Cough", "Chest Pain"],
   "Upset Stomach" : ["Nausea", "Drowsiness", "Constipation"],
   "Diarrhea" : ["Nausea", "Upset Stomach"],
+  "Constipation": ["Heart Burn", "Upset Stomach"],
+  "Dry Cough": ["Heart Burn", "Wheezing", "Chest Pain"],
+  "Chest Pain": ["Heart Burn", "Dry Cough"],
+  "Nausea": ["Upset Stomach", "Diarrhea"],
+  "Drowsiness": ["Upset Stomach"]
 
 }
 
