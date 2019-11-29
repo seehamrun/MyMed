@@ -269,6 +269,14 @@ main>footer .feature {
   font-weight: bold;
 }
 
+.medSymButton{
+  width: 150px;
+  height: 30px;
+  border-radius: 12pt;
+  font-size: 8.5pt;
+  font-weight: bold;
+}
+
 .mainButton{
   width: 200px;
   height: 30px;
@@ -322,7 +330,7 @@ main>footer .feature {
 .quickSym:hover, #medicineFormButton:hover, #goBackToMedicineFormButton:hover,
 #cancelNewMedicineButton:hover, #deleteMedicineButton:hover, #deleteMedButton:hover, 
 #exitMedicineInfoView:hover, #cancelConfirmNewMedicineButton:hover, #confirmNewMedicineButton:hover, 
-#cancelAddButton:hover, .notifButtons:hover{
+#cancelAddButton:hover, .notifButtons:hover, .medSymButton:hover{
   background-color: #98BFC1;
 }
 
